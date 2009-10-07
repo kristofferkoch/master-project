@@ -1,0 +1,74 @@
+\documentclass[a4paper, english, 11pt, twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%\usepackage{babel}
+\usepackage{graphicx}
+%\usepackage[squaren]{SIunits}
+\usepackage{hyperref}
+%\usepackage{amsmath,amsfonts,amssymb,textcomp,varioref}
+\usepackage{verbatim}
+\usepackage{times}
+
+
+% Set the beginning of a LaTeX document
+\begin{document}
+
+\title{Clockless AES circuit}
+\author{Kristoffer Ellersgaard Koch}
+
+\date{Fall 2009}
+
+\pagestyle{empty}
+\maketitle
+\thispagestyle{empty}
+
+\cleardoublepage
+\pagestyle{plain}
+\thispagestyle{plain}
+\pagenumbering{roman} % i, ii, iii, iv...
+\input{abstract}
+\newpage
+
+\tableofcontents
+%\listoffigures
+\newpage
+\setcounter{page}{1}
+\pagenumbering{arabic} % 1, 2, 3...
+\input{introduction}
+\clearpage
+
+\newpage
+\input{theory}
+\clearpage
+\newpage
+\input{tools}
+\clearpage
+\newpage
+\input{implementation}
+\clearpage
+\newpage
+\input{discussion}
+\clearpage
+\newpage
+\input{conclusion}
+
+\clearpage
+\newpage
+\appendix
+
+%\input{source}
+%\clearpage
+%\newpage
+
+%\input{fremdriftsplan}
+%\clearpage
+%\newpage
+
+%\newpage
+\label{ssec:littref}
+\bibliography{boker} 
+\bibliographystyle{plain}
+
+
+\end{document}
+
