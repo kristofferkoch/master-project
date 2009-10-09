@@ -3,18 +3,18 @@
 One major assumption in the majority of digital VLSI circuits produced
 today, is the notion of a discrete and common time. This is provided
 by one or more clocks. This is an important simplification that makes
-reasoning about digital circuits easyer. However, as circuits grow in
+reasoning about digital circuits easier. However, as circuits grow in
 size and complexity, the task of providing a clock-signal
 simultaneously to all flip-flops in the circuit becomes an
 increasingly difficult task.
 
 When designing a digital circuit for solving a computable problem, it
-is usual to split the problem into multiple combinatorical circuits
+is usual to split the problem into multiple combinatorial circuits
 with memory elements between them. The value of a memory element is
 then determined by the value of the previous memory element modified
-by a combinatorical circuit. However, this combinatorical circuit has
+by a combinatorial circuit. However, this combinatorial circuit has
 a non-zero delay, and there is usually no reliable way to assure that
-the output value has been completly calculated. With clocked circuits,
+the output value has been completely calculated. With clocked circuits,
 the completeness of a calculation is guaranteed by assuming worst case
 conditions and setting the clock-frequency accordingly.
 
@@ -26,41 +26,41 @@ designers.
 
 In this project, I will investigate options for synthesizing digital
 circuits without clocks. A prerequisite for such solutions is a
-high-level language that ultimatly can be implemented in silicon. I
+high-level language that ultimately can be implemented in silicon. I
 will also attempt to implement an encryption-circuit for the
-AES-standard with one of theese technologies.
+AES-standard with one of these technologies.
 
 The motivation for investigating clockless is that the clock, while
 conceptually simple, imposes increased complexity when the circuits
-grow; the clock can ultimatly end up complicating the design instead
+grow; the clock can ultimately end up complicating the design instead
 of simplifying it. Modern CAD tools employ complex and proprietary
-techniques for distributing the clock througout the circuit.
+techniques for distributing the clock throughout the circuit.
 
 Clockless circuits also have different and interesting characteristics:
 \begin{itemize}
-\item The clock in a conventional design is one of the main contributer to
+\item The clock in a conventional design is one of the main contributor to
 power-consumption. 
 
-\item The simultanity of the clock make the circuits exhibit noticeable
+\item The simultaneity of the clock make the circuits exhibit noticeable
 spikes in the electromagnetic spectrum.
 
 \item The whole problem of clock domain crossing is sidestepped, allowing a
 higher degree of modularity and reuseability.
 
-\item Clockless designs are more robust to process techonlogies and
+\item Clockless designs are more robust to process technologies and
 operating conditions. Clockless circuits operates at its highest
 possible speed, and adapts to doping variations, bending and stretching in
-contemporary strechable circuits, temperature and voltage.
+contemporary stretchable circuits, temperature and voltage.
 
 \item Clockless circuits does not require massive, ``cheap'', metallic
-fan-outs provided by the silicon-techonlogy today. Future technologies
+fan-outs provided by the silicon-technology today. Future technologies
 for implementing logic, such as ``rapid single flux quantum'', does not
 provide a similar simple fan-out mechanism. 
 \end{itemize}
 
 When mapping high-level description hardware-languages to silicon,
 there must also be implemented a form of completion-detection for the
-combinatorical circuits to drive the memory-elements instead of the
+combinatorial circuits to drive the memory-elements instead of the
 clock. I will outline multiple of these techniques in this project,
 but common for them all is that they impose overhead in the form of
 increased area, power and complexity.
@@ -68,7 +68,7 @@ increased area, power and complexity.
 Another issue with clockless circuits is that it is a relatively young
 discipline. There is not an industry-wide adoption, nor experience
 with clockless design. Testing is one obstacle that has not been
-suffiently researched. 
+sufficiently researched. 
 
 \subsection{AES}
 
