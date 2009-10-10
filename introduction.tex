@@ -4,58 +4,58 @@ One major assumption in the majority of digital VLSI circuits produced
 today, is the notion of a discrete and common time. This is provided
 by one or more clocks. This is an important simplification that makes
 reasoning about digital circuits easier. However, as circuits grow in
-size and complexity, the task of providing a clock-signal
-simultaneously to all flip-flops in the circuit becomes an
-increasingly difficult task.
+size and complexity, it is ``well known'' \cite[pp. 5]{sparso} that
+the task of providing a clock-signal simultaneously to all flip-flops
+in the circuit becomes an increasingly difficult task.
 
 When designing a digital circuit for solving a computable problem, it
 is usual to split the problem into multiple combinatorial circuits
-with memory elements between them. The value of a memory element is
-then determined by the value of the previous memory element modified
-by a combinatorial circuit. However, this combinatorial circuit has
-a non-zero delay, and there is usually no reliable way to assure that
-the output value has been completely calculated. With clocked circuits,
-the completeness of a calculation is guaranteed by assuming worst case
-conditions and setting the clock-frequency accordingly.
+with memory elements between them (figure!). The value of a memory
+element is then determined by the value of the previous memory element
+modified by a combinatorial circuit. However, this combinatorial
+circuit has a non-zero delay, and there is usually no reliable way to
+determine when the output value has been completely calculated. With
+clocked circuits, the completeness of a calculation is guaranteed by
+assuming worst case conditions and setting the clock-frequency
+accordingly.
 
 As digital circuits have grown, designing has decreasingly become a
 problem of specification, and increasingly become problem of managing
-complexity. Hardware description languages, such as VHDL and Verilog,
-is maybe the most important tools to manage complexity for digital
-designers.
+complexity. To make specifications with varying levels of abstractions
+in hardware description languages, such as VHDL and Verilog, is
+crucial for digital designers to manage complexity.
 
 In this project, I will investigate options for synthesizing digital
 circuits without clocks. A prerequisite for such solutions is a
-high-level language that ultimately can be implemented in silicon. I
-will also attempt to implement an encryption-circuit for the
-AES-standard with one of these technologies.
+high-level language that ultimately can create circuits for
+implementation in silicon. I will also implement an encryption circuit
+for the AES-standard with one of these technologies and attempt to
+identify challenges and possibilities with such a solution.
 
 The motivation for investigating clockless is that the clock, while
 conceptually simple, imposes increased complexity when the circuits
 grow; the clock can ultimately end up complicating the design instead
-of simplifying it. Modern CAD tools employ complex and proprietary
-techniques for distributing the clock throughout the circuit.
+of simplifying it. Clockless circuits also have different and
+interesting characteristics: \begin{itemize}
 
-Clockless circuits also have different and interesting characteristics:
-\begin{itemize}
-\item The clock in a conventional design is one of the main contributor to
-power-consumption. 
+\item The clock in a conventional design is one of the main
+  contributors to power-consumption \cite{tiwari1998reducing}.
 
-\item The simultaneity of the clock make the circuits exhibit noticeable
-spikes in the electromagnetic spectrum.
+\item The simultaneity of the clock make the circuits exhibit
+  noticeable spikes in the electromagnetic spectrum.
 
-\item The whole problem of clock domain crossing is sidestepped, allowing a
-higher degree of modularity and reuseability.
+\item The whole problem of clock domain crossing is sidestepped,
+  allowing a higher degree of modularity and reuseability.
 
 \item Clockless designs are more robust to process technologies and
-operating conditions. Clockless circuits operates at its highest
-possible speed, and adapts to doping variations, bending and stretching in
-contemporary stretchable circuits, temperature and voltage.
+  operating conditions. The speed of clockless circuits automaticly
+  adapts to doping variations, bending and stretching in stretchable
+  circuits, temperature and voltage.
 
 \item Clockless circuits does not require massive, ``cheap'', metallic
-fan-outs provided by the silicon-technology today. Future technologies
-for implementing logic, such as ``rapid single flux quantum'', does not
-provide a similar simple fan-out mechanism. 
+  fan-outs (the clock) provided by the silicon-technology today. Future
+  technologies for implementing logic, such as ``rapid single flux
+  quantum'', may not provide a similar simple fan-out mechanism.
 \end{itemize}
 
 When mapping high-level description hardware-languages to silicon,
@@ -63,7 +63,7 @@ there must also be implemented a form of completion-detection for the
 combinatorial circuits to drive the memory-elements instead of the
 clock. I will outline multiple of these techniques in this project,
 but common for them all is that they impose overhead in the form of
-increased area, power and complexity.
+reduced speed and increased area, power and complexity.
 
 Another issue with clockless circuits is that it is a relatively young
 discipline. There is not an industry-wide adoption, nor experience
