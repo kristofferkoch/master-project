@@ -1,5 +1,12 @@
 \section{Introduction}
 
+In this project, I will investigate options for synthesizing digital
+circuits without clocks. A prerequisite for such a solutions is a
+high-level language that ultimately can create circuits for
+implementation in silicon. I will also implement an encryption circuit
+for the AES-standard with one of these technologies and attempt to
+identify challenges and possibilities with such a solution.
+
 One major assumption in the majority of digital VLSI circuits produced
 today, is the notion of a discrete and common time. This is provided
 by one or more clocks. This is an important simplification that makes
@@ -19,18 +26,11 @@ clocked circuits, the completeness of a calculation is guaranteed by
 assuming worst case conditions and setting the clock-frequency
 accordingly.
 
-As digital circuits have grown, designing has decreasingly become a
-problem of specification, and increasingly become problem of managing
-complexity. To make specifications with varying levels of abstractions
-in hardware description languages, such as VHDL and Verilog, is
-crucial for digital designers to manage complexity.
-
-In this project, I will investigate options for synthesizing digital
-circuits without clocks. A prerequisite for such solutions is a
-high-level language that ultimately can create circuits for
-implementation in silicon. I will also implement an encryption circuit
-for the AES-standard with one of these technologies and attempt to
-identify challenges and possibilities with such a solution.
+As digital circuits have grown, designing has increasingly become
+problem of managing complexity \cite{flynn2009deep}. To make
+specifications with varying levels of abstractions in hardware
+description languages, such as VHDL and Verilog, is crucial for
+digital designers to manage complexity.
 
 The motivation for investigating clockless is that the clock, while
 conceptually simple, imposes increased complexity when the circuits
@@ -45,7 +45,8 @@ interesting characteristics: \begin{itemize}
   noticeable spikes in the electromagnetic spectrum.
 
 \item The whole problem of clock domain crossing is sidestepped,
-  allowing a higher degree of modularity and reuseability.
+  allowing a higher degree of modularity and reuseability. [Sparsø
+    ref: 67 (1950!), 57, 108, 97, 94]
 
 \item Clockless designs are more robust to process technologies and
   operating conditions. The speed of clockless circuits automaticly
@@ -61,8 +62,8 @@ interesting characteristics: \begin{itemize}
 When mapping high-level description hardware-languages to silicon,
 there must also be implemented a form of completion-detection for the
 combinatorial circuits to drive the memory-elements instead of the
-clock. I will outline multiple of these techniques in this project,
-but common for them all is that they impose overhead in the form of
+clock. I will outline some of these techniques in this project, but
+common for them all is that they impose overhead in the form of
 reduced speed and increased area, power and complexity.
 
 Another issue with clockless circuits is that it is a relatively young
@@ -70,10 +71,16 @@ discipline. There is not an industry-wide adoption, nor experience
 with clockless design. Testing is one obstacle that has not been
 sufficiently researched. 
 
+Scratchpad: Asynchronous design demands an open mind. Attempts to
+directly convert clocked circuits into clockless ones is ``doomed to
+fail''. Wave pipelining?
+
 \subsection{AES}
 
-Reason for choice of AES for this thesis. Well specified.
+Should this be a subsection under section 4?
+
+Reason for choice of AES for this thesis: It is well known and well specified.
 
 About the rijandael algorithm.
 
-Clockless cryptography.
+Clockless cryptography: Power, timing and other (?) side-band attacks.

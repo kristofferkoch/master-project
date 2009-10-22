@@ -1,7 +1,56 @@
 \section{Theory}
 
-Handshake components.
+When designing clockless circuits, we need a substitute for the clock
+to assure data validity, and flow for the memory elements. This is
+done with handshaking, usually implemented with a request-acknowledge
+protocol as shown in figure~\ref{fig:hanshake}. The handshaking
+provides a local clock for the storage elements\footnote{Usually
+  single latches, as master-slave latches is unneeded.}.
 
-Logic determinism.
+There are multiple ways to implement handshaking. This project will
+focus on high-level synthesis that is agnostic on the underlying
+protocol (it can even be clocked). 
 
-Enclosure and memory.
+\subsection{2-phase and 4-phase handshaking}
+
+
+
+\subsection{Push and pull channels}
+
+\subsection{Indication and the muller-C element}
+
+\subsection{Bundled-data}
+
+When using bundled-data, values are represented by conventional
+boolean levels, and the handshaking is implemented by bundeling the
+request and acknowledge signals with the data as shown in
+figure~\ref{fig:bundeled}. Bundled data is also refered to as
+single-rail.
+
+As binary data usually has no way of indicating completion, matching
+delays has to be inserted to maintain correct behaviour as shown in
+figure~\ref{fig:bundeled_delay}.
+
+\subsection{Dual rail}
+
+If the signal is encoded into a representation using two wires per
+bit, one for each value; logic 1 (true) and logic 0 (false). This
+redundant representation provides the possibility of a variable to
+have an ``empty'' value. 
+
+By carefully designing the combinational blocks without hazards, it is
+possible to detect when values are completely computed. An example of
+a circuit for completion detection is shown in figure
+\ref{fig:completion}. By using this completion-detection for the
+request (or acknowledge) signal, the circuit can be made delay
+insensitive.
+
+\subsection{Summary}
+
+
+%\begin{quote}
+%A register may input and store a new data token from its predecessor
+%if its successor has input and stored the data token that the register
+%was previously holding
+%\end{quote}
+
