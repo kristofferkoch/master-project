@@ -1,0 +1,89 @@
+\section{The Advanced Encryption Standard (AES)}
+
+On September 12, 1997, the United States' National Institute of
+Standards and Technology (NIST) announced an open competition to
+develop a new symmetric-key block cipher algorithm to replace the
+ageing DES (Data Encryption Standard). The demands was that the AES
+should be an unclassified, public, and royalty-free symmetric-key
+encryption algorithm supporting block sizes of 128-bits, key sizes of
+128-, 192- and 256-bits.
+
+On October 2, 2000, NIST announced that it had selected
+Rijandael~\cite{rijandael}, designed by two Belgium cryptographers:
+Daemen and Rijmen, as the AES.
+
+\subsection{Overview of the algorithm}
+
+Rijandael is a symmetric-key block-cipher algorithm. This means that
+encryption is defined as $c \leftarrow E_k(m)$, and decryption as $m
+\leftarrow D_k(c)$, given a key $k$, a message $m$ and a ciphertext
+$c$. Rijandael supports variable block and key sizes, but I will
+confine the description and implementation to block and key size to
+128~bits. This will not cause a big loss of generality to the working
+principle. I will also limit the implementation to encryption-only.
+
+The Rijandael cipher segments a 128-bit message into 16 bytes,
+represented by a $4 \times 4$ matrix:
+
+\begin{equation}
+  m = \begin{pmatrix}
+    m_0 & m_4 & m_8 & m_12 \\
+    m_1 & m_5 & m_9 & m_13 \\
+    m_2 & m_6 & m_10 & m_14 \\
+    m_3 & m_7 & m_11 & m_15
+    \end{pmatrix}
+\end{equation}
+
+This is referred to as the ``State'' througout the algorithm, and it
+is permutated 10 rounds in the algorithm. For larger key sizes, the
+number of rounds should be increased. A round is composed of four
+transformations described below:
+
+\begin{verbatim}
+Round(State, RoundKey):
+   SubBytes(State)
+   ShiftRows(State)
+   MixColumns(State)
+   AddRoundKey(State, RoundKey)
+\end{verbatim}
+
+The final round is slightly different: it excludes the MixColumns
+stage. ``RoundKey'' is derived from the key by the key expansion
+scheme also described below. For decrypting, given the correct key,
+there exists inverse functions for each round.
+
+The Rijandael cipher work in a finite field. The field is realized as
+all polynomials modulo the irreducivle polynomial $f(x) = x^8 + x^4 +
+x^3 + x + 1$ over $\mathbb{F}_2$. This is called the ``Rijandael
+field'', and $\mathbb{F}_{w^8}$ is often used to denote the field with
+256 element. Each element can also be represented as a 8-bit byte. All
+operations on elements in this field results in an element within the
+field. The field supports addition and multiplication between two
+field elements.
+
+\subsubsection{SubBytes}
+
+$y = A x^-1 + b$
+
+\subsubsection{ShiftRows}
+
+
+
+\subsubsection{MixColumns}
+
+\subsubsection{AddRoundKey}
+
+\subsubsection{Key expansion}
+
+\subsection{Modes of operation}
+
+\subsection{Implementation details for VLSI implementation}
+
+\subsubsection{S-box implementations}
+
+\subsubsection{Word width}
+
+
+\subsubsection{Pipelining}
+
+
