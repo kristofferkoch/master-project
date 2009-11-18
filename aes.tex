@@ -12,6 +12,11 @@ On October 2, 2000, NIST announced that it had selected
 Rijandael~\cite{rijandael}, designed by two Belgium cryptographers:
 Daemen and Rijmen, as the AES.
 
+%As of today, multiple processors include native support for
+%acceleration of AES-specific operations. NIST has also called for the
+%development of a new hash-function, and 4 of 14 of the remaining
+%candidates rely on native AES-acceleration to acheive performance.
+
 \subsection{Overview of the algorithm}
 
 Rijandael is a symmetric-key block-cipher algorithm. This means that
@@ -27,30 +32,31 @@ represented by a $4 \times 4$ matrix:
 
 \begin{equation}
   m = \begin{pmatrix}
-    m_0 & m_4 & m_8 & m_12 \\
-    m_1 & m_5 & m_9 & m_13 \\
-    m_2 & m_6 & m_10 & m_14 \\
-    m_3 & m_7 & m_11 & m_15
+    m_0 & m_4 & m_8 & m_{12} \\
+    m_1 & m_5 & m_9 & m_{13} \\
+    m_2 & m_6 & m_{10} & m_{14} \\
+    m_3 & m_7 & m_{11} & m_{15}
     \end{pmatrix}
 \end{equation}
 
-This is referred to as the ``State'' througout the algorithm, and it
+This is referred to as the $State$ througout the algorithm, and it
 is permutated 10 rounds in the algorithm. For larger key sizes, the
 number of rounds should be increased. A round is composed of four
 transformations described below:
 
-\begin{verbatim}
-Round(State, RoundKey):
-   SubBytes(State)
-   ShiftRows(State)
-   MixColumns(State)
-   AddRoundKey(State, RoundKey)
-\end{verbatim}
+\begin{eqnarray*}
+&Round&(State, RoundKey) \{\\
+  & &SubBytes (State)\\
+  & &ShiftRows (State)\\
+  & &MixColumns (State)\\
+  & &AddRoundKey (State, RoundKey)\\
+&\}&
+\end{eqnarray*}
 
-The final round is slightly different: it excludes the MixColumns
-stage. ``RoundKey'' is derived from the key by the key expansion
-scheme also described below. For decrypting, given the correct key,
-there exists inverse functions for each round.
+The final round, $FinalRound$, is slightly different: it excludes the
+MixColumns stage. $RoundKey$ is derived from the key by the key
+expansion scheme also described below. For decrypting, given the
+correct key, there exists inverse functions for each round.
 
 The Rijandael cipher work in a finite field. The field is realized as
 all polynomials modulo the irreducivle polynomial $f(x) = x^8 + x^4 +
@@ -61,29 +67,104 @@ operations on elements in this field results in an element within the
 field. The field supports addition and multiplication between two
 field elements.
 
-\subsubsection{SubBytes}
+\subsubsection{$SubBytes$}
 
-$y = A x^-1 + b$
+$y = A x^{-1} + b$, where $
+  A =
+  \begin{pmatrix}
+    1 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\
+    1 & 1 & 0 & 0 & 0 & 1 & 1 & 1 \\
+    1 & 1 & 1 & 0 & 0 & 0 & 1 & 1 \\
+    1 & 1 & 1 & 1 & 0 & 0 & 0 & 1 \\
+    1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 \\
+    0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 \\
+    0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 \\
+    0 & 0 & 0 & 1 & 1 & 1 & 1 & 1
+  \end{pmatrix}$ and $
+  b = 
+  \begin{pmatrix}
+    1\\1\\0\\0\\0\\1\\1\\0
+  \end{pmatrix}$
 
-\subsubsection{ShiftRows}
 
+\subsubsection{$ShiftRows$}
 
+\begin{equation}
+  \begin{pmatrix}
+    s_0 & s_4 & s_8    & s_{12} \\
+    s_1 & s_5 & s_9    & s_{13} \\
+    s_2 & s_6 & s_{10} & s_{14} \\
+    s_3 & s_7 & s_{11} & s_{15}
+  \end{pmatrix} 
+  \rightarrow
+  \begin{pmatrix}
+    s_0    & s_4    & s_8    & s_{12} \\
+    s_{13} & s_1    & s_5    & s_9 \\
+    s_{10} & s_{14} & s_2    & s_6 \\
+    s_7    & s_{11} & s_{15} & s_3    
+    \end{pmatrix}
+\end{equation}
 
-\subsubsection{MixColumns}
+\subsubsection{$MixColumns$}
 
-\subsubsection{AddRoundKey}
+For each of the columns in the state as $
+\begin{pmatrix}
+  s_0\\s_1\\s_2\\s_3
+\end{pmatrix}$
 
-\subsubsection{Key expansion}
+\subsubsection{$AddRoundKey$}
 
-\subsection{Modes of operation}
+\subsubsection{$Key expansion$}
+
 
 \subsection{Implementation details for VLSI implementation}
 
-\subsubsection{S-box implementations}
+\subsubsection{$SubBytes$ implementations}
+
+Usually, the $SubBytes$ routine and its inverse is implemented with a
+table lookup with 256 entries. In hardware, this means some kind of a
+ROM, with an unbreakable latency and the inherent impossibility for
+pipelining. In \cite{csbox} a method is described for decomposing the
+$2^8$ fields into smaller $2^4$ fields for calculating the inverse
+combinationally.
 
 \subsubsection{Word width}
 
+\subsubsection{Resource sharing}
 
-\subsubsection{Pipelining}
 
+\subsubsection{Pipelining and mode of operation}
+
+While it is possible to pipeline the $Round$ procedure by itself, and
+even $SubBytes$ itself when implemented combinationally as in
+\cite{csbox}, it can also be beneficial to unroll multiple $Round$s in
+series as shown in figure~\ref{fig:unroll}. I will here describe 3
+modes of operation to illustrate when unrolling can be beneficial.
+
+When encrypting a plaintext with a length over 128 bits, the most
+straightforward way is to split the plaintext into 128-bit blocks and
+encrypt them individually. This is called the electronic codebook mode
+of operation, or ECB. As the blocks can be encrypted and decrypted
+independently, this method allows pipelining with unrolled
+$Round$s. However, as the AES-algorithm deterministicly yields the
+same output given the same input (key and data), it allows an attacker
+to guess the ciphertext by trial-and-error. Figure~\ref{fig:ecbpict}
+shows how ECB reveals data-patterns from the plaintext.
+
+The output feedback (OFB) mode of operation, described in
+figure~\ref{fig:ofb}, while not suffering from the same weakness as
+the ECB mode, does not benefit from unrolling, as the preceeding
+ciphertext is needed to encrypt the current plaintext. The OFB mode
+generates a pseudo random (but unguessable, not given the key) string
+that is XORed with the plaintext to encrypt, similar to the Vernam
+one-time-pad cipher \cite{vernam}.
+
+The only mode of operation considered secure, to my knowledge, that
+benefit from loop unrolling, is the counter (CTR) mode. In this mode,
+similar to the OFB mode, a pseudorandom string is generated simpy by
+encrypting an integer corresponding to the current block number, that
+is $c_i \leftarrow m_i \oplus E_k(i)$, and similarily $m_i \leftarrow
+c_i \oplus E_k(i)$. Whithout feedback, the CTR mode allows random
+access during encryption and decryption (for e.g. full disk
+encryption), and blocks can be processed in paralell.
 

@@ -1,3 +1,15 @@
 \section{Implementation of clockless AES}
 
-xxx
+A 32 bit datapath was chosen for the same reasons given in
+\cite{ekelund}, assuming that the same reasoning can be used for
+clockless design.
+
+The resources used in the top level design is:
+ 4 8-bit s-box circuits, shared between the datapath and the keypath.
+ 1 32-bit mixcolumn circuit
+ 1 128-bit xor-adder circuit
+
+Shiftrows and rotating is implemented by the means of wiring.
+
+
+ 
