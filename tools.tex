@@ -43,15 +43,61 @@ handshake components. Breeze can later be implemented into
 standard-cell logic by. Figure~\ref{fig:balsatool} shows Balsa and
 it's related tools.
 
-Balsa has been used to implement two major circuits: The
+Balsa has for example been used to implement two major circuits: The
 DMA-controller for the Amulet3a processor, and the ARM-compatible SPA
 processor itself. Balsa is released to the public domain under the
 GPLv2 licence.
 
 Handshake component based designs has been shown to use little power,
-but also to have low performance [1].
+but also to have low performance [1]. Balsa-circuits are shown to
+exhibit a control heavy structure which inhibits performace. Teak
+introduces a new target component set and synthesis scheme for
+synthesizing Balsa circuits as an attempt to mitigate this
+drawback. Instead of focusing on control
 
 
+While Balsa-circuits consists of capacity-less channels, where data on
+the channel has to be valid from request to acknowledge, Teak allows
+buffers to be automatically inserted into the dataflow, allowing
+decoupling. 
+
+
+Teak circuits have been demonstrated to exhibit 4.6\% to 18.39\% worse
+performance than Balsa-circuits when syntehsizing to a fixed gate
+delay dual-rail four-phase implementation. However, Teak has a larger
+headroom for automated optimising transformations.
+
+\subsection{Testing}
+
+When manufacturing VLSI circuits, it is critical to validate that
+units does not contain defects that affect correct functionality. A
+common design technique is to ``design for test'', where extra logic
+is incorporated into the hardware to facilitate testing.
+
+In \cite[pp. 27-28]{sparso} testing is briefly discussed, noting that
+the indication-principle will cause a circuit with a stuck-at fault to
+deadlock.
+
+The most common method for running tests on digital circuits is
+scan-testing. When scan-testing circuits, state-holding elements are
+connected into scan-chains that allows the tester to control and
+observe the internal (and external) state of the circuit under
+test. Industry-standard scan-testing utilises a global-test clock to
+steer the testing-procedure. This allows single-stepping the circuit
+and by stopping the clock (and traditionally the entire circuit),
+$I_{DDQ}$ testing can be performed
+
+Clockless circuits usually uses latches and Müller C-elements for
+memory. These memory-elements are not directly scanable, and they are
+not connected to any global clock. However, in \cite{fullscan}, it is
+shown how Tangram-compiled, clockless, circuits can be made scanable
+by replacing all state-holding handshake components with scanable
+equivalents. In Figure~\ref{scanC}, from \cite{fullscan}, a scanable
+C-element is shown. These components are then connected into a serial scan
+chain which is compatible with existing ATPG tools.
+
+It is important to note that the scan-chain insertion is done at the
+technology-mapping stage, allowing WHAT
 
 [1] [H. van Gageldonk, D. Baumann,
   K. van Berkel, D. Gloor, A.
