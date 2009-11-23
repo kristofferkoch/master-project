@@ -10,24 +10,25 @@ The AES was implemented in an architecture with four 128-bit
 registers, two for the data, and two for the key and
 key-expansion. Two registers is needed for each, as they are
 implemented as single latches and not master/slave latches which does
-not, by design, support auto assignments of the form $var := var +
-1$. The architecture was designed with one control-input,
+not, by design, support auto assignments of the form 
+$var := var + 1$. The architecture was designed with one control-input,
 $instruction$ and two 32-bit data-ports; one for inputp and one for
 output. Seven instructions was defined to load, permutate and unload
 data from the 128-bit key AES-encryption-circuit.
+
 \begin{description}
-  \item[load_data]{Loads 4 32-bit words of data into $reg_0$}
-  \item[load_key128]{Loads 4 32-bit words of key into $key_0$}
-  \item[add_key]{Sets $reg_1 := reg_0 xor key_0$ and then sets $reg_0
-    := reg_1$ and $key_1 := key_0$.}
-  \item[sub_bytes]{Calculates $reg_1 := SubBytes(ShiftRows(reg_0))$.}
-  \item[mix_col_expand]{Calculates $reg_0 := MixColumns(reg_1)$, and
-    $key_0 := ExpandKey(key_1)$.}
-  \item[skip_mix_expand]{Only calculates $key_0 := ExpandKey(key_1)$.}
-  \item[output_data]{Outputs data in $reg_0$ as 4 32-bit words}.
+  \item[load\_data] Loads 4 32-bit words of data into $reg_0$.
+  \item[load\_key128] Loads 4 32-bit words of key into $key_0$.
+  \item[add\_key] Sets $reg_1 := reg_0 xor key_0$ and then sets $reg_0
+    := reg_1$ and $key_1 := key_0$.
+  \item[sub\_bytes] Calculates $reg_1 := SubBytes(ShiftRows(reg_0))$.
+  \item[mix\_col\_expand] Calculates $reg_0 := MixColumns(reg_1)$, and
+    $key_0 := ExpandKey(key_1)$.
+  \item[skip\_mix\_expand] Only calculates $key_0 := ExpandKey(key_1)$.
+  \item[output\_data] Outputs data in $reg_0$ as 4 32-bit words.
 \end{description}
 
-For the testbench, a module called aes_ctrl issues instructions to
+For the testbench, a module called aes\_ctrl issues instructions to
 this module as follows:
 \begin{verbatim}
    loop
