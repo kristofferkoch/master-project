@@ -44,14 +44,14 @@ is permutated 10 rounds in the algorithm. For larger key sizes, the
 number of rounds should be increased. A round is composed of four
 transformations described below:
 
-\begin{eqnarray*}
+\begin{eqnarray}
 &Round&(State, RoundKey) \{\\
   & &SubBytes (State)\\
   & &ShiftRows (State)\\
   & &MixColumns (State)\\
   & &AddRoundKey (State, RoundKey)\\
 &\}&
-\end{eqnarray*}
+\end{eqnarray}
 
 The final round, $FinalRound$, is slightly different: it excludes the
 MixColumns stage. $RoundKey$ is derived from the key by the key
@@ -67,7 +67,7 @@ operations on elements in this field results in an element within the
 field. The field supports addition and multiplication between two
 field elements.
 
-\subsubsection{$SubBytes$}
+The $SubBytes$ routing subtitutes all bytes using the following formula:
 
 $y = A x^{-1} + b$, where $
   A =
@@ -84,11 +84,11 @@ $y = A x^{-1} + b$, where $
   b = 
   \begin{pmatrix}
     1\\1\\0\\0\\0\\1\\1\\0
-  \end{pmatrix}$
+  \end{pmatrix}$.
+That is, inversion in the finite galois-field, followed by a short
+final and linear transformation.
 
-
-\subsubsection{$ShiftRows$}
-
+$ShiftRows$ is a permutation of the order of the bytes in the state:
 \begin{equation}
   \begin{pmatrix}
     s_0 & s_4 & s_8    & s_{12} \\
@@ -103,19 +103,31 @@ $y = A x^{-1} + b$, where $
     s_{10} & s_{14} & s_2    & s_6 \\
     s_7    & s_{11} & s_{15} & s_3    
     \end{pmatrix}
-\end{equation}
+\end{equation}.
+In VLSI circuits, this is easily implemented as wiring.
 
-\subsubsection{$MixColumns$}
-
-For each of the columns in the state as $
+The $MixColumn$ procedure scrambles all the columns in the state,
+given as $
 \begin{pmatrix}
   s_0\\s_1\\s_2\\s_3
-\end{pmatrix}$
+\end{pmatrix}$, 
+by multiplying them with the matrix $
+\begin{pmatrix}
+  2 & 3 & 1 & 1 \\
+  1 & 2 & 3 & 1 \\
+  1 & 1 & 2 & 3 \\
+  3 & 1 & 1 & 2
+\end{pmatrix}$ 
+in the galois field. Multiplication, $q(x)=a(x)b(x)$, can be performed
+by generating eight partial products $P_i(x) = a(x) x^i$ and then add
+them as $q(x) = \sum_{i=0}^{7} P_i b_i$, according to the bits $b_i$
+in $b(x)$.
 
-\subsubsection{$AddRoundKey$}
-
-\subsubsection{$Key expansion$}
-
+$AddRoundKey$ performs simple addition of the expanded key and the
+state in the galois field. This addition can be implemented by simple
+xor. The expanded key, derived from the input key, is calculated by
+operations similar to the round function, and needs 4 bytes of
+$SubBytes$ transformation as well.
 
 \subsection{Implementation details for VLSI implementation}
 

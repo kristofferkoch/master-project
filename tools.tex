@@ -15,7 +15,7 @@ synchronous message passing between the processes.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.7\textwidth]{tangtool.pdf}
+  \includegraphics{tangtool.pdf}
   \caption{Tangram design flow. Figure from \cite{fullscan}.}
   \label{fig:tangtool}
 \end{figure}
@@ -31,7 +31,7 @@ Philips again.
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=0.7\textwidth]{handbuffer.pdf}
+  \includegraphics{handbuffer.pdf}
   \caption{Handshake buffer a) defined in Balsa source code and b)
     implemented as a handshake circuit. Figure from
     \cite{taylor2008automatic}.}
@@ -48,10 +48,6 @@ a one-place buffer. Active ports are denoted with a filled circle.
 There are multiple circuits implemented in Tangram/Haste. XXX list and
 explain different circuits.
 
-Tangram is referred to as being a ``syntax-directed'' language. This
-means that the silicon compiler transparently and predictably
-generates components from each language construct.
-
 Balsa is another CSP-like language based on Tangram, and is an attempt
 to define a more expressive language. Balsa also introduces a
 intermediate file format, breeze, which contains the netlist for the
@@ -59,24 +55,30 @@ handshake components. Breeze can later be implemented into
 standard-cell logic by. Figure~\ref{fig:balsatool} shows Balsa and
 it's related tools.
 
+Tangram and Balsa are referred to as being a ``syntax-directed''
+languages. This means that the silicon compiler transparently and
+predictably generates components from each language construct. In
+Figure~\ref{fig:handbuffer} it is shown how a simple Balsa-program is
+translated into a handshake circuit. Each language-construct, loop,
+sequence, transfer, and variable, are translated into handshake
+components on a one-to-one basis.
+
 Balsa has for example been used to implement two major circuits: The
 DMA-controller for the Amulet3a processor, and the ARM-compatible SPA
 processor itself. Balsa is released to the public domain under the
 GPLv2 licence.
 
 Handshake component based designs has been shown to use little power,
-but also to have low performance \cite{80c51}. Balsa-circuits are shown to
+but also to have low performance \cite{80c51}. Handshake-circuits
 exhibit a control heavy structure which inhibits performace. Teak
-introduces a new target component set and synthesis scheme for
-synthesizing Balsa circuits as an attempt to mitigate this
+\cite{teak} introduces a new target component set and synthesis scheme
+for synthesizing Balsa circuits as an attempt to mitigate this
 drawback. Instead of focusing on control
-
 
 While Balsa-circuits consists of capacity-less channels, where data on
 the channel has to be valid from request to acknowledge, Teak allows
 buffers to be automatically inserted into the dataflow, allowing
 decoupling. 
-
 
 Teak circuits have been demonstrated to exhibit 4.6\% to 18.39\% worse
 performance than Balsa-circuits when syntehsizing to a fixed gate
@@ -88,7 +90,8 @@ headroom for automated optimising transformations.
 When manufacturing VLSI circuits, it is critical to validate that
 units does not contain defects that affect correct functionality. A
 common design technique is to ``design for test'', where extra logic
-is incorporated into the hardware to facilitate testing.
+is incorporated into the hardware to facilitate testing. The design
+methodology ensures that 
 
 In \cite[pp. 27-28]{sparso} testing is briefly discussed, noting that
 the indication-principle will cause a circuit with a stuck-at fault to
@@ -119,5 +122,6 @@ C-element is shown. These components are then connected into a serial
 scan chain which is compatible with existing ATPG tools.
 
 It is important to note that the scan-chain insertion is done at the
-technology-mapping stage, allowing WHAT
+technology-mapping stage, allowing the designer to insert test-logic
+in the final stage of the design-flow.
 
