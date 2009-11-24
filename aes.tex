@@ -67,26 +67,25 @@ operations on elements in this field results in an element within the
 field. The field supports addition and multiplication between two
 field elements.
 
-The $SubBytes$ routing subtitutes all bytes using the following formula:
-
-$y = A x^{-1} + b$, where $
-  A =
-  \begin{pmatrix}
-    1 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\
-    1 & 1 & 0 & 0 & 0 & 1 & 1 & 1 \\
-    1 & 1 & 1 & 0 & 0 & 0 & 1 & 1 \\
-    1 & 1 & 1 & 1 & 0 & 0 & 0 & 1 \\
-    1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 \\
-    0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 \\
-    0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 \\
-    0 & 0 & 0 & 1 & 1 & 1 & 1 & 1
-  \end{pmatrix}$ and $
-  b = 
-  \begin{pmatrix}
-    1\\1\\0\\0\\0\\1\\1\\0
-  \end{pmatrix}$.
-That is, inversion in the finite galois-field, followed by a short
-final and linear transformation.
+The $SubBytes$ routing subtitutes all bytes using $y = A x^{-1} + b$.
+%%  where $
+%%   A =
+%%   \begin{pmatrix}
+%%     1 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\
+%%     1 & 1 & 0 & 0 & 0 & 1 & 1 & 1 \\
+%%     1 & 1 & 1 & 0 & 0 & 0 & 1 & 1 \\
+%%     1 & 1 & 1 & 1 & 0 & 0 & 0 & 1 \\
+%%     1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 \\
+%%     0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 \\
+%%     0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 \\
+%%     0 & 0 & 0 & 1 & 1 & 1 & 1 & 1
+%%   \end{pmatrix}$ and $
+%%   b = 
+%%   \begin{pmatrix}
+%%     1\\1\\0\\0\\0\\1\\1\\0
+%%   \end{pmatrix}$.
+That is, inversion in the finite galois field, followed by a short
+linear transformation.
 
 $ShiftRows$ is a permutation of the order of the bytes in the state:
 \begin{equation}
@@ -103,14 +102,14 @@ $ShiftRows$ is a permutation of the order of the bytes in the state:
     s_{10} & s_{14} & s_2    & s_6 \\
     s_7    & s_{11} & s_{15} & s_3    
     \end{pmatrix}
-\end{equation}.
+\end{equation}
 In VLSI circuits, this is easily implemented as wiring.
 
-The $MixColumn$ procedure scrambles all the columns in the state,
-given as $
-\begin{pmatrix}
-  s_0\\s_1\\s_2\\s_3
-\end{pmatrix}$, 
+The $MixColumn$ procedure scrambles all the columns in the state
+%given as $
+%\begin{pmatrix}
+%  s_0\\s_1\\s_2\\s_3
+%\end{pmatrix}$, 
 by multiplying them with the matrix $
 \begin{pmatrix}
   2 & 3 & 1 & 1 \\
@@ -118,16 +117,18 @@ by multiplying them with the matrix $
   1 & 1 & 2 & 3 \\
   3 & 1 & 1 & 2
 \end{pmatrix}$ 
-in the galois field. Multiplication, $q(x)=a(x)b(x)$, can be performed
-by generating eight partial products $P_i(x) = a(x) x^i$ and then add
-them as $q(x) = \sum_{i=0}^{7} P_i b_i$, according to the bits $b_i$
-in $b(x)$.
+in the galois field. Multiplication, $q(x)=a(x)b(x)$, in the galois
+field can be performed by generating eight partial products $P_i(x) =
+a(x) x^i$ (theese can be calculated iterativly) and then add them as
+$q(x) = \sum_{i=0}^{7} P_i b_i$, according to the bits $b_i$ in
+$b(x)$.
 
 $AddRoundKey$ performs simple addition of the expanded key and the
 state in the galois field. This addition can be implemented by simple
 xor. The expanded key, derived from the input key, is calculated by
 operations similar to the round function, and needs 4 bytes of
 $SubBytes$ transformation as well.
+
 
 \subsection{Implementation details for VLSI implementation}
 
@@ -179,4 +180,27 @@ is $c_i \leftarrow m_i \oplus E_k(i)$, and similarily $m_i \leftarrow
 c_i \oplus E_k(i)$. Whithout feedback, the CTR mode allows random
 access during encryption and decryption (for e.g. full disk
 encryption), and blocks can be processed in paralell.
+
+\subsection{Decryption and other keysizes}
+
+While this project does not cover decryption and the larger keysizes,
+that is 192 and 256 bit, I will shortly outline how this can be
+implemented, and roughly estimate the impact on area it will inflict.
+
+The decryption is rougly the algorithms performed inversely with
+reverse operations for $SubBytes$, $ShiftRows$, $MixColumns$ and
+$AddKey$. $SubBytes^{-1}$, implementet combinationally, is the same
+operation as $SubBytes$, except for trivial linear transform and
+multiplexers choosing the inverse or normal
+transformations. $ShiftRows^{-1}$ is, like $ShiftRows$, has the
+simplest implementation as wires. $MixColumns^{-1}$ uses different and
+larger coefficients than $MixColumns$, demanding 4 partial products to
+be calculated versus 2 in the galois field multiplications, and
+thereby causing longer delays. The calculation of the partial products
+can be shared between $MixColumns$ and its inverses. For
+$AddRoundKey^{-1}$, the same hardware can be used as in
+$AddRoundKey$. The keyschedule for the decryption is the same as for
+encryption.
+
+Implementing decryption alongside with encryption will 
 
