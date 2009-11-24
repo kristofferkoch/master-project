@@ -129,6 +129,13 @@ xor. The expanded key, derived from the input key, is calculated by
 operations similar to the round function, and needs 4 bytes of
 $SubBytes$ transformation as well.
 
+\subsection{Performance of the AES}
+
+The performance of the openssl AES CBC implementation\footnote{openssl
+  version 0.9.8g. Measurement performed with the command ``openssl
+  time aes''.} was measured on a Intel Pentium 4 2.80GHz CPU, showing
+a performance up to 111, 94.7, and 82.3 MB/s with key sizes of 128,
+192, and 256 bits respectivily.
 
 \subsection{Implementation details for VLSI implementation}
 
@@ -144,7 +151,6 @@ combinationally.
 \subsubsection{Word width}
 
 \subsubsection{Resource sharing}
-
 
 \subsubsection{Pipelining and mode of operation}
 
@@ -185,7 +191,8 @@ encryption), and blocks can be processed in paralell.
 
 While this project does not cover decryption and the larger keysizes,
 that is 192 and 256 bit, I will shortly outline how this can be
-implemented, and roughly estimate the impact on area it will inflict.
+implemented, and roughly estimate the impact on area and performance
+it will inflict.
 
 The decryption is rougly the algorithms performed inversely with
 reverse operations for $SubBytes$, $ShiftRows$, $MixColumns$ and
@@ -202,5 +209,19 @@ $AddRoundKey^{-1}$, the same hardware can be used as in
 $AddRoundKey$. The keyschedule for the decryption is the same as for
 encryption.
 
-Implementing decryption alongside with encryption will 
+Expanding the algorithm to key sizes of 192 and 256 bit requires
+changes to the control logic, and the key schedule as well as to the
+mere sizes of the key registers. The control logic must be changed as
+128, 192, and 256 bit keys respectivily requires 10, 12, and 14
+$Round$s to be performed. The key schedule also demands an extension
+of the control logic to support the larger key sizes.
+
+Implementing decryption alongside with encryption will, as discussed
+above, have some negative effect on the performance, as there will be
+a greater control overhead. The area will also most likely increase by
+a factor, but as most of the operations can be generalized to also
+work in inverse, the overhead should not be dramatic. Expansion of the
+supported key sizes, in addition to the obvious demand of larger
+registers, only requires minor expansion of the control logic.
+
 
