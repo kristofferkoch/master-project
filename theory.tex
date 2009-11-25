@@ -1,5 +1,32 @@
 \section{Theory}
 
+Usually, when designing digital circuits, two major simplifications
+are made. The first is that the signals are discrete, or digital. The
+second simplification is to look at the time as discrete. Theese
+simplifications makes it meaningful to talk about momentarily state of
+the circuits, namely the contents of memory elements. The concept of
+next state is also meaningful, as the whole circuit is synchronized by
+a common clock, which also assures correct timing and data validity
+across the circuit.
+
+When designing clockless circuits, the second simplification no longer
+holds. Technical aspects, like timing and data validity, must be
+guaranteed by other means. For the designer, it demands a change in
+the reasoning, as it is, in general, no longer meaningful to look at a
+momentarily state.
+
+In this section, I will discuss the technical aspects of clockless
+design, while design tools for designing will be discussed in
+section~\ref{label:tools}.
+
+Delay insensitivity.
+
+QDI
+
+Speed insensitivity.
+
+Handshake circuits.
+
 When designing clockless circuits, we need a substitute for the clock
 to assure data validity, and flow for the memory elements. This is
 done with handshaking, usually implemented with a request-acknowledge
