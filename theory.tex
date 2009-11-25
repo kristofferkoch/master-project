@@ -17,11 +17,32 @@ momentarily state.
 
 In this section, I will discuss the technical aspects of clockless
 design, while design tools for designing will be discussed in
-section~\ref{label:tools}.
+section~\ref{sec:tools}.
 
-Delay insensitivity.
+The strictest class of clockless circuits, delay insensive (DI)
+circuits, assumes only bounded and positive, but unknown, delays in
+wires and gates. Such circuits can only be constructed of C-elements
+(see Figure~\ref{fig:c}) and inverters. In \cite{dilimit} it is shown
+that it is impossible to create any useful circuits with this
+methodology. The article suggests the introduction of a timing
+assumption to facilitate the construction of useful circuits: The
+isochronic fork.
 
-QDI
+\begin{figure}[htbp]
+  \centering
+  \includegraphics{c.pdf}
+  \caption{a) Symbol for a Muller C-element. b) Karnough-map c)
+    Gate-level implementation}
+  \label{fig:c}
+\end{figure}
+
+An isochronic fork is a timing assumption that requires a signal to be
+delivered simultainiously to two circuit elements. This fork allows
+the sender of a signal to assume reception with only one acknowledge
+signal. The class of circuits depending on isochronic forks are said
+to be quasi delay insensitive (QDI), and it is also turing complete
+\cite{turing}, meaning that useful circuits can be designed in this
+methodology.
 
 Speed insensitivity.
 
