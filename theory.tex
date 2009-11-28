@@ -31,8 +31,10 @@ isochronic fork.
 \begin{figure}[htbp]
   \centering
   \includegraphics{c.pdf}
-  \caption{a) Symbol for a Muller C-element. b) Karnough-map c)
-    Gate-level implementation}
+  \caption{a) Symbol for a C-element, originally designed by David
+    E. Muller. b) Truth-table c) Karnough-map d) Gate-level
+    implementation. The C-element is the basis of many clockless
+    constructs.}
   \label{fig:c}
 \end{figure}
 
@@ -43,37 +45,61 @@ signal. The class of circuits depending on isochronic forks are said
 to be quasi delay insensitive (QDI), and in \cite{turing} it is proved
 that any turing computable function has a QDI implementation.
 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics{handshake.pdf}
+  \caption{A clockless pipeline implemented with handshaking ensuring
+    data validity. Figure from \cite{sparso}.}
+  \label{fig:handshake}
+\end{figure}
+
 When designing clockless circuits, we need a substitute for the clock
-to assure data validity, and flow for the memory elements. This is
-done with handshaking, usually implemented with a request-acknowledge
-protocol as shown in figure~\ref{fig:hanshake}. The handshaking
-provides a local clock for the storage elements\footnote{Usually
-  single latches, as master-slave latches is unneeded.}.
+to assure data validity througout the circuit. This can be provided by
+handshaking, usually implemented with a variation of the
+request-acknowledge protocol as shown in
+Figure~\ref{fig:handshake}. The handshaking provides a local clock for
+the storage elements, usually latches or C-elements.
 
 There are multiple ways to implement handshaking. This project will
 focus on high-level synthesis that is agnostic on the underlying
-protocol (it can even be clocked). 
+protocol; even clocked circuits can be synthetisised. 
 
-\subsection{2-phase and 4-phase handshaking}
+XXX introductory summary of techniques
 
-
-\subsection{Push and pull channels}
-
-\subsection{Indication and the muller-C element}
-
-\subsection{Bundled-data}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics{bundled.pdf}
+  \caption{Bundled data XXX}
+  \label{fig:bundled}
+\end{figure}
 
 When using bundled-data, values are represented by conventional
 boolean levels, and the handshaking is implemented by bundeling the
 request and acknowledge signals with the data as shown in
-figure~\ref{fig:bundeled}. Bundled data is also refered to as
-single-rail.
+Figure~\ref{fig:bundled}~a). Bundled data is also refered to as
+single-rail, in contrast to dual or N-of-M rail encodings, as data is
+encoded as ordinary binary data.
 
-As binary data usually has no way of indicating completion, matching
-delays has to be inserted to maintain correct behaviour as shown in
-figure~\ref{fig:bundeled_delay}.
+As there usually are no way to determine wether binary data from a
+combinatonal function is complete, delays matching the combinational
+delay have to be inserted in the control path to maintain correct
+behaviour as shown in Figure~\ref{fig:bundeled_delay}.
 
-\subsection{Dual rail}
+When using handshake protocols, the handshake can be done in four or
+two phases as shown in Figure~\ref{fig:bundled}~b) and c). The four
+phase protocol is also referred to as return to zero (RTZ). The two
+phase protocol makes better use of the bandwith over the wires, but
+usually the four phase protocol is preferred, as it allows for a
+simpler implementation consuming less area.
+
+In Figure~\ref{fig:bundled}~a), a \emph{push} channel is shown. This means
+that the data source initiates the handshake, as opposed to when the
+consumer inititates it. A channel where the consumer initiates the
+handshake is referred to as a \emph{pull} channel.
+
+Indication and the muller-C element
+
+\subsection{Encodings}
 
 If the signal is encoded into a representation using two wires per
 bit, one for each value; logic 1 (true) and logic 0 (false). This

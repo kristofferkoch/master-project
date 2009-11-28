@@ -1,7 +1,7 @@
 
 all: top.pdf
 
-top.pdf: *.tex boker.bib tangtool.pdf handbuffer.pdf c.pdf
+top.pdf: *.tex boker.bib tangtool.pdf handbuffer.pdf c.pdf handshake.pdf bundled.pdf
 	pdflatex top
 	bibtex top
 	pdflatex top
@@ -9,6 +9,8 @@ top.pdf: *.tex boker.bib tangtool.pdf handbuffer.pdf c.pdf
 
 .SUFFIXES: .svg .pdf
 .svg.pdf:
+	inkscape -A $@ -z -f $< -D
+.pdf.svg:
 	inkscape -A $@ -z -f $< -D
 
 clean:
