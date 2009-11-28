@@ -40,13 +40,8 @@ An isochronic fork is a timing assumption that requires a signal to be
 delivered simultainiously to two circuit elements. This fork allows
 the sender of a signal to assume reception with only one acknowledge
 signal. The class of circuits depending on isochronic forks are said
-to be quasi delay insensitive (QDI), and it is also turing complete
-\cite{turing}, meaning that useful circuits can be designed in this
-methodology.
-
-Speed insensitivity.
-
-Handshake circuits.
+to be quasi delay insensitive (QDI), and in \cite{turing} it is proved
+that any turing computable function has a QDI implementation.
 
 When designing clockless circuits, we need a substitute for the clock
 to assure data validity, and flow for the memory elements. This is
@@ -91,6 +86,8 @@ a circuit for completion detection is shown in figure
 \ref{fig:completion}. By using this completion-detection for the
 request (or acknowledge) signal, the circuit can be made delay
 insensitive.
+
+Hazards
 
 \subsection{Summary}
 
