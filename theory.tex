@@ -1,5 +1,7 @@
 \section{Theory}
 
+XXX intro
+
 Usually, when designing digital circuits, two major simplifications
 are made. The first is that the signals are discrete, or digital. The
 second simplification is to look at the time as discrete. Theese
@@ -40,10 +42,11 @@ isochronic fork.
 
 An isochronic fork is a timing assumption that requires a signal to be
 delivered simultainiously to two circuit elements. This fork allows
-the sender of a signal to assume reception with only one acknowledge
-signal. The class of circuits depending on isochronic forks are said
-to be quasi delay insensitive (QDI), and in \cite{turing} it is proved
-that any turing computable function has a QDI implementation.
+the sender of a signal to assume reception with acknowledge from one
+of the receivers. The class of circuits depending on isochronic forks
+are said to be quasi delay insensitive (QDI), and in \cite{turing} it
+is proved that any turing computable function has a QDI
+implementation.
 
 \begin{figure}[htbp]
   \centering
@@ -61,8 +64,10 @@ Figure~\ref{fig:handshake}. The handshaking provides a local clock for
 the storage elements, usually latches or C-elements.
 
 There are multiple ways to implement handshaking. This project will
-focus on high-level synthesis that is agnostic on the underlying
+focus XXX on high-level synthesis that is agnostic on the underlying
 protocol; even clocked circuits can be synthetisised. 
+
+\subsection{Encodings}
 
 XXX introductory summary of techniques
 
@@ -97,26 +102,44 @@ that the data source initiates the handshake, as opposed to when the
 consumer inititates it. A channel where the consumer initiates the
 handshake is referred to as a \emph{pull} channel.
 
-Indication and the muller-C element
-
-\subsection{Encodings}
+XXX Indication and the muller-C element
 
 If the signal is encoded into a representation using two wires per
 bit, one for each value; logic 1 (true) and logic 0 (false). This
 redundant representation provides the possibility of a variable to
-have an ``empty'' value. 
+have an ``empty'' value, also referred to as a NULL. 
 
-By carefully designing the combinational blocks without hazards, it is
-possible to detect when values are completely computed. An example of
-a circuit for completion detection is shown in figure
-\ref{fig:completion}. By using this completion-detection for the
-request (or acknowledge) signal, the circuit can be made delay
-insensitive.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics{compdet.pdf}
+  \caption{A memory element with completion detection. Figure from XXX.}
+  \label{fig:compdet}
+\end{figure}
 
-Hazards
+When implementing combinational functions for dual rail encoding, they
+are typically split into two functions; one to compute the logic
+0 or false value, and one to compute the logic 1 or true
+value. Completion is indicated by one of the signals going high, and
+allows a completion detector as shown in Figure~\ref{fig:compdet} to
+control the memory elements.
+
+Using dual rail encoding also implies using the four phase protocol
+(Figure~\ref{fig:bundled}~b)), as the combinational circuits must
+return to the NULL state between values to distinguish successive
+values on the channel. Care must therefore not only be taken to avoid
+hazards on NULL to value transitions, but also on the return to NULL
+transitions.
+
+A more generalized method for encoding, is N of M encodings, where
+dual rail is 1 of 2 encoding. In \cite{nullconv}, multiple of these
+encodings are explored, and an ALU for 1 of 4 encoding are shown to
+have good characteristics in terms of power, area and performance,
+compared to XXX. I terms of wiring, 1 of 4 encoding demands no more
+wires than dual rail encoding. 
 
 \subsection{Summary}
 
+XXX
 
 %\begin{quote}
 %A register may input and store a new data token from its predecessor

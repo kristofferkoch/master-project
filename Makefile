@@ -1,7 +1,7 @@
 
 all: top.pdf
 
-top.pdf: *.tex boker.bib tangtool.pdf handbuffer.pdf c.pdf handshake.pdf bundled.pdf
+top.pdf: *.tex boker.bib tangtool.pdf handbuffer.pdf c.pdf handshake.pdf bundled.pdf compdet.pdf
 	pdflatex top
 	bibtex top
 	pdflatex top
