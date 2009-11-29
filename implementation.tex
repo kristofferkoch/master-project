@@ -28,25 +28,17 @@ data from the 128-bit key AES-encryption-circuit.
   \item[output\_data] Outputs data in $reg_0$ as 4 32-bit words.
 \end{description}
 
+
 For the testbench, a module called aes\_ctrl issues instructions to
 this module as follows:
-\begin{verbatim}
-   loop
-      instruction <- load_key;
-      instruction <- load_data;
-      instruction <- add_key || i := 0;
-      loop
-         instruction <- sub_bytes;
-         instruction <- mix_col_expand || ii := (i+1 as 4 bits);
-         instruction <- add_key        || i  := ii
-      while i /= 9
-      end;
-      instruction <- sub_bytes;
-      instruction <- skip_mix_expand;
-      instruction <- add_key;
-      instruction <- output_data
-   end
-\end{verbatim}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[height=0.9\textheight]{aesctrl.pdf}
+  \caption{Source code for AES control module and Balsa handshake
+    implementation}
+  \label{fig:aesctrl}
+\end{figure}
 
 
 A 32 bit datapath was chosen for the same reasons given in
