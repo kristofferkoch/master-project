@@ -61,7 +61,7 @@ correct key, there exists inverse functions for each round.
 The Rijandael cipher work in a finite field. The field is realized as
 all polynomials modulo the irreducivle polynomial $f(x) = x^8 + x^4 +
 x^3 + x + 1$ over $\mathbb{F}_2$. This is called the ``Rijandael
-field'', and $\mathbb{F}_{w^8}$ is often used to denote the field with
+field'', and $\mathbb{F}_{2^8}$ is often used to denote the field with
 256 element. Each element can also be represented as a 8-bit byte. All
 operations on elements in this field results in an element within the
 field. The field supports addition and multiplication between two
@@ -110,13 +110,15 @@ The $MixColumn$ procedure scrambles all the columns in the state
 %\begin{pmatrix}
 %  s_0\\s_1\\s_2\\s_3
 %\end{pmatrix}$, 
-by multiplying them with the matrix $
-\begin{pmatrix}
-  2 & 3 & 1 & 1 \\
-  1 & 2 & 3 & 1 \\
-  1 & 1 & 2 & 3 \\
-  3 & 1 & 1 & 2
-\end{pmatrix}$ 
+by multiplying them with the matrix
+\begin{equation}
+  \begin{pmatrix}
+    2 & 3 & 1 & 1 \\
+    1 & 2 & 3 & 1 \\
+    1 & 1 & 2 & 3 \\
+    3 & 1 & 1 & 2
+  \end{pmatrix}
+\end{equation}
 in the galois field. Multiplication, $q(x)=a(x) \otimes b(x)$, in the
 galois field can be performed by generating up to eight partial
 products $P_i(x) = a(x) x^i$ (this can be calculated iterativly as
