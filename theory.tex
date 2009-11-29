@@ -117,18 +117,23 @@ have an ``empty'' value, also referred to as a NULL.
 \end{figure}
 
 When implementing combinational functions for dual rail encoding, they
-are typically split into two functions; one to compute the logic
-0 or false value, and one to compute the logic 1 or true
-value. Completion is indicated by one of the signals going high, and
-allows a completion detector as shown in Figure~\ref{fig:compdet} to
-control the memory elements.
+are typically split into two functions analogous to the pull up and
+pull down networks in CMOS; one to compute the logic 0 or false value,
+and one to compute the logic 1 or true value. Completion is indicated
+by one of the signals going high, and allows a completion detector as
+shown in Figure~\ref{fig:compdet} to control the memory elements.
+
+XXX figure showing dual rail inverter, a dual-rail gate and a ``truth
+table''.
 
 Using dual rail encoding also implies using the four phase protocol
 (Figure~\ref{fig:bundled}~b)), as the combinational circuits must
 return to the NULL state between values to distinguish successive
 values on the channel. Care must therefore not only be taken to avoid
-hazards on NULL to value transitions, but also on the return to NULL
+hazards on NULL-to-value transitions, but also on the return-to-NULL
 transitions.
+
+Hazards are avoided by adding redundant gates XXX
 
 A more generalized method for encoding, is N of M encodings, where
 dual rail is 1 of 2 encoding. In \cite{nullconv}, multiple of these
@@ -136,6 +141,8 @@ encodings are explored, and an ALU for 1 of 4 encoding are shown to
 have good characteristics in terms of power, area and performance,
 compared to XXX. I terms of wiring, 1 of 4 encoding demands no more
 wires than dual rail encoding. 
+
+XXX mention Fant advanced pipelining, williams bubbles etc?
 
 \subsection{Summary}
 
