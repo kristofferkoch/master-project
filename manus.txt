@@ -1,0 +1,29 @@
+Manus:
+
+Jeg har arbeidet med klokkeløst design, siden dette er en interesant
+innfallsvinkel på digitalt kretsdesign. Klokkeløse kretser har også 
+interesante egenskaper, så som lavt effektforbruk, robusthet i forhold til 
+forsinkelser og varierende operasjonsbetingelser som spenning og 
+temperatur. De har også lav elektromagnetisk emisjon, som på
+vanlige kretser domineres av klokkesignalet og dens harmonier.
+
+Jeg har i prosjektet studert teorien til det som kreves for å designe
+kretser som oppfører seg korrekt uten klokke, og sett på forskjellige
+metoder for å spesifisere og implementere disse.
+
+Jeg har også sett på produksjonstesting, og studert litteratur på hvordan
+klokkeløse kretser tidligere er blitt gjort testbare.
+
+Som praktisk arbeid har jeg implementert og verifisert en klokkeløs AES
+krypteringsmodul i ett spesialisert programmeringsspråk, og oversatt
+den til en simulerbar verilog nettliste. Det var, også læringskurven tatt
+i betraktning, relativt enkelt å definere en slik relativt kompleks krets
+korrekt.
+
+Ytelsen og areal er enda ikke skikkelig målt, men ligger an til å bli
+betrakelig verre enn tilsvarende synkrone kretser. Jeg syns derfor at det
+er spennende å studere det siste arbeidet som blir gjort med automatisk
+optimalisering av slike klokkeløse kretser.  Jeg ønsker også i fremtiden
+å måle effektforbruket, og har ikke helt urimelige forhåpninger om at det
+her kan vises til gode resultater.
+

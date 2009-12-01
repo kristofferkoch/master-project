@@ -441,16 +441,16 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="781.55154"
-     inkscape:cy="531.26477"
+     inkscape:cx="724.40868"
+     inkscape:cy="416.97906"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      showguides="false"
      inkscape:snap-to-guides="false"
      inkscape:snap-center="false"
-     inkscape:window-width="1400"
-     inkscape:window-height="974"
+     inkscape:window-width="1280"
+     inkscape:window-height="950"
      inkscape:window-x="0"
      inkscape:window-y="25"
      inkscape:window-maximized="1"
@@ -518,7 +518,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -617,7 +617,7 @@
            x="113.13708"
            y="294.74777"
            style="font-size:16px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;text-anchor:start;font-family:Arial;-inkscape-font-specification:AlArabiya Italic" /></flowRegion><flowPara
-         id="flowPara3710">In this project, design of clockless design is explored. A clockless AES encryption module was designed, showing the feasability of  implementing complex clockless circuits. Methods for production testing was also found.</flowPara></flowRoot>    <path
+         id="flowPara3710">In this project, design of clockless circuits was explored. A clockless AES encryption module was designed, showing the feasability of  implementing complex clockless circuits. Methods for production testing was also found.</flowPara></flowRoot>    <path
        style="fill:none;stroke:#0000ff;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m -2.0203051,165.65127 1493.0055051,0"
        id="path3714" />
@@ -649,7 +649,7 @@
            x="38.57143"
            y="372.36218"
            style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;text-anchor:start;font-family:Arial;-inkscape-font-specification:Arial" /></flowRegion><flowPara
-         id="flowPara3738">Clockless circuits has previously been shown to have excellent properties such as low power consumption, low EMI, and high robustness to circuit delays and difficult operating conditions.</flowPara><flowPara
+         id="flowPara3738">Clockless circuits has previously been shown to have excellent properties such as low power consumption, low EMI, and robustness to circuit delays and difficult operating conditions.</flowPara><flowPara
          id="flowPara6190" /><flowPara
          id="flowPara5850">Major obstacles for adopting clockless circuit design are the lack of well known design tools and workflows, and compatibility with industry standard design-for-test techniques. In this work, methods for designing clockless digital circuits will be explored by surveying the litterature and designing a clockless AES encryption circuit.</flowPara><flowPara
          id="flowPara3734" /></flowRoot>    <path
@@ -1503,14 +1503,18 @@
        transform="translate(32.12903,300.82161)"><flowRegion
          id="flowRegion3728-2"><rect
            id="rect3730-2"
-           width="388.6875"
-           height="316.28571"
+           width="387.25894"
+           height="272"
            x="38.57143"
            y="372.36218"
            style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;text-anchor:start;font-family:Arial;-inkscape-font-specification:Arial" /></flowRegion><flowPara
-         id="flowPara3732-4">When designing clockless circuits, it is possible to express them in conventional languages, such as Verilog and VHDL. While there are done some work with this, most progress has been made with languages based on more spesialised languages, emitting handshake circuits that can be translated to hardware.</flowPara><flowPara
+         id="flowPara3732-4">When designing clockless circuits, it is possible to express them in conventional languages, such as Verilog and VHDL. While there are done some work with this, most progress has been made with more specialized languages, emitting handshake circuits that can be translated to hardware.</flowPara><flowPara
          id="flowPara6184" /><flowPara
          id="flowPara6186">Handshake circuits controls the flow of data in circuits by using local handshake signaling instead of a global clock, only consuming power at active areas in the circuit.</flowPara><flowPara
+         id="flowPara3370" /><flowPara
+         id="flowPara3374">In 1993, Philips pioneered by developing the Tangram xxxxxxxxx</flowPara><flowPara
+         id="flowPara3366" /><flowPara
+         id="flowPara3368" /><flowPara
          id="flowPara6178" /></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot3726-1-4"
@@ -1799,7 +1803,7 @@
        xml:space="preserve"
        id="flowRoot3726-1-5"
        style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
-       transform="translate(512.5932,259.14687)"><flowRegion
+       transform="translate(512.5932,277.14687)"><flowRegion
          id="flowRegion3728-2-5"><rect
            id="rect3730-2-1"
            width="381.61642"
@@ -1807,9 +1811,9 @@
            x="38.57143"
            y="372.36218"
            style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;text-anchor:start;font-family:Arial;-inkscape-font-specification:Arial" /></flowRegion><flowPara
-         id="flowPara6240">Philips pioneered by developing the Tangram language and the cababilities of this new language was demonstrated by creating complex clockless circuits, such as a DES encryption core, low power hearing aids and even processor cores. At Manchester University, a similar language, Balsa, was designed and released to the public domain, facilitating further research on the topic.</flowPara><flowPara
+         id="flowPara6240">language, and the cababilities of this new language was demonstrated by creating complex clockless circuits, such as a DES encryption core, low power hearing aids, and even processor cores. At Manchester University, a similar language, Balsa, was designed and released to the public domain, facilitating further research on the topic.</flowPara><flowPara
          id="flowPara6254" /><flowPara
-         id="flowPara6256">For this project, an AES encryption core was designed in the Balsa-language, and a new synthesis tool with support for automatic optimisations, Teak, was used to map the circuit into a working Verilog netlist. A survey was done to find methods for insertion of scan-chains for testing.</flowPara><flowPara
+         id="flowPara6256">For this project, an AES encryption core was designed in the Balsa-language, and a new synthesis tool with support for automatic optimizations, Teak, was used to map the circuit into a working Verilog netlist. A survey was done to find methods for insertion of scan-chains for testing.</flowPara><flowPara
          id="flowPara6250" /><flowPara
          id="flowPara6252" /></flowRoot>    <g
        id="g7839"
