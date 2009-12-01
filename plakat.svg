@@ -440,17 +440,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="714.36284"
-     inkscape:cy="401.77"
+     inkscape:zoom="0.7"
+     inkscape:cx="781.55154"
+     inkscape:cy="531.26477"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      showguides="false"
      inkscape:snap-to-guides="false"
      inkscape:snap-center="false"
-     inkscape:window-width="1280"
-     inkscape:window-height="950"
+     inkscape:window-width="1400"
+     inkscape:window-height="974"
      inkscape:window-x="0"
      inkscape:window-y="25"
      inkscape:window-maximized="1"
@@ -518,7 +518,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -561,7 +561,7 @@
        sodipodi:nodetypes="cc" />
     <text
        xml:space="preserve"
-       style="font-size:14px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       style="font-size:14px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial;font-stretch:normal;font-variant:normal"
        x="40.406101"
        y="117.12332"
        id="text3594"><tspan
@@ -579,7 +579,7 @@
          id="tspan3600">NTNU, Trondheim</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:14px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
+       style="font-size:14px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial;font-stretch:normal;font-variant:normal"
        x="1059.6375"
        y="117.12332"
        id="text3594-2"><tspan
@@ -605,10 +605,10 @@
            height="226.27417"
            x="30.304577"
            y="222.01678" /></flowRegion><flowPara
-         id="flowPara3660"></flowPara></flowRoot>    <flowRoot
+         id="flowPara3660" /></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot3704"
-       style="font-size:16px;font-style:italic;font-weight:normal;text-align:justify;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:AlArabiya Italic;font-stretch:normal;font-variant:normal"
+       style="font-size:16px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:AlArabiya Italic"
        transform="translate(-42.485491,-94.707724)"><flowRegion
          id="flowRegion3706"><rect
            id="rect3708"
@@ -616,8 +616,8 @@
            height="127.45763"
            x="113.13708"
            y="294.74777"
-           style="font-size:16px;font-style:italic;text-align:justify;text-anchor:start;-inkscape-font-specification:AlArabiya Italic;font-family:Arial;font-weight:normal;font-stretch:normal;font-variant:normal" /></flowRegion><flowPara
-         id="flowPara3710">4-5 linjers sammendrag som forteller hva prosjektet omhandler. 4-5 linjers sammendrag som forteller hva prosjektet omhandler. 4-5 linjers sammendrag som forteller hva prosjektet omhandler.</flowPara></flowRoot>    <path
+           style="font-size:16px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;text-anchor:start;font-family:Arial;-inkscape-font-specification:AlArabiya Italic" /></flowRegion><flowPara
+         id="flowPara3710">In this project, design of clockless design is explored. A clockless AES encryption module is designed, showing the feasability of  implementing complex clockless circuits. Methods for production testing are also found.</flowPara></flowRoot>    <path
        style="fill:none;stroke:#0000ff;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m -2.0203051,165.65127 1493.0055051,0"
        id="path3714" />
@@ -1508,7 +1508,7 @@
            x="38.57143"
            y="372.36218"
            style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;text-anchor:start;font-family:Arial;-inkscape-font-specification:Arial" /></flowRegion><flowPara
-         id="flowPara3732-4">When designing clockless circuits, it is possible to express them in conventional languages, such as Verilog and VHDL. While there are done some work with this, most progress has been made with languages based on the Communicating Sequential Processes language (CSP), emitting handshake circuits that can be translated to hardware.</flowPara><flowPara
+         id="flowPara3732-4">When designing clockless circuits, it is possible to express them in conventional languages, such as Verilog and VHDL. While there are done some work with this, most progress has been made with languages based on more spesialised languages, emitting handshake circuits that can be translated to hardware.</flowPara><flowPara
          id="flowPara6184" /><flowPara
          id="flowPara6186">Handshake circuits controls the flow of data in circuits by using local handshake signaling instead of a global clock, only consuming power at active areas in the circuit.</flowPara><flowPara
          id="flowPara6178" /></flowRoot>    <flowRoot
@@ -1807,7 +1807,7 @@
            x="38.57143"
            y="372.36218"
            style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;text-anchor:start;font-family:Arial;-inkscape-font-specification:Arial" /></flowRegion><flowPara
-         id="flowPara6240">Philips pioneered by developing the Tangram language and the cababilities of this new language was demonstrated by creating complex clockless circuits, such as a DES encryption core, low power hearing aids and even processor cores. At Manchester University, a similar language, Balsa, was designed and released to the public domain, allowing further research on the topic.</flowPara><flowPara
+         id="flowPara6240">Philips pioneered by developing the Tangram language and the cababilities of this new language was demonstrated by creating complex clockless circuits, such as a DES encryption core, low power hearing aids and even processor cores. At Manchester University, a similar language, Balsa, was designed and released to the public domain, facilitating further research on the topic.</flowPara><flowPara
          id="flowPara6254" /><flowPara
          id="flowPara6256">For this project, an AES encryption core was designed in the Balsa-language, and a new synthesis tool with support for automatic optimisations, Teak, was used to map the circuit into a working Verilog netlist. A survey was done to find methods for inserting scan-chains for testing.</flowPara><flowPara
          id="flowPara6250" /><flowPara
@@ -1909,7 +1909,7 @@
            height="65.714287"
            x="1251.4286"
            y="509.50504" /></flowRegion><flowPara
-         id="flowPara6434"></flowPara></flowRoot>    <rect
+         id="flowPara6434" /></flowRoot>    <rect
        style="fill:#ffa400;fill-opacity:1;stroke:none"
        id="rect6610"
        width="79.363411"
@@ -1936,7 +1936,7 @@
        sodipodi:cy="387.36218"
        sodipodi:rx="60"
        sodipodi:ry="25"
-       d="m 1200,387.36218 a 60,25 0 1 1 -120,0 60,25 0 1 1 120,0 z"
+       d="m 1200,387.36218 c 0,13.80712 -26.8629,25 -60,25 -33.1371,0 -60,-11.19288 -60,-25 0,-13.80712 26.8629,-25 60,-25 33.1371,0 60,11.19288 60,25 z"
        transform="matrix(0.64813447,0,0,0.51850757,455.91484,212.51637)" />
     <flowRoot
        transform="matrix(0.7407251,0,0,0.7407251,371.96764,125.83569)"
@@ -1958,7 +1958,7 @@
        sodipodi:cy="589.14789"
        sodipodi:rx="62.142857"
        sodipodi:ry="24.642857"
-       d="m 1383.5714,589.14789 a 62.142857,24.642857 0 1 1 -124.2857,0 62.142857,24.642857 0 1 1 124.2857,0 z"
+       d="m 1383.5714,589.14789 c 0,13.60987 -27.8223,24.64285 -62.1428,24.64285 -34.3206,0 -62.1429,-11.03298 -62.1429,-24.64285 0,-13.60988 27.8223,-24.64286 62.1429,-24.64286 34.3205,0 62.1428,11.03298 62.1428,24.64286 z"
        transform="matrix(0.7407251,0,0,0.7407251,281.84444,98.607603)" />
     <flowRoot
        transform="matrix(0.7407251,0,0,0.7407251,387.48209,240.02476)"
@@ -1983,7 +1983,7 @@
            height="40"
            x="1295.7142"
            y="635.2193" /></flowRegion><flowPara
-         id="flowPara6501"></flowPara></flowRoot>    <path
+         id="flowPara6501" /></flowRoot>    <path
        sodipodi:type="arc"
        style="fill:#00ca00;fill-opacity:1;stroke:none"
        id="path6562"
@@ -1991,7 +1991,7 @@
        sodipodi:cy="641.64789"
        sodipodi:rx="63.92857"
        sodipodi:ry="22.857143"
-       d="m 1394.2857,641.64789 a 63.92857,22.857143 0 1 1 -127.8571,0 63.92857,22.857143 0 1 1 127.8571,0 z"
+       d="m 1394.2857,641.64789 c 0,12.62365 -28.6217,22.85714 -63.9285,22.85714 -35.3068,0 -63.9286,-10.23349 -63.9286,-22.85714 0,-12.62365 28.6218,-22.85715 63.9286,-22.85715 35.3068,0 63.9285,10.2335 63.9285,22.85715 z"
        transform="matrix(0.84831647,0,0,0.71757745,137.65132,114.51843)" />
     <flowRoot
        transform="matrix(0.7407251,0,0,0.7407251,395.07204,279.03269)"
@@ -2057,7 +2057,7 @@
        sodipodi:cy="477.36218"
        sodipodi:rx="45"
        sodipodi:ry="15"
-       d="m 1170,477.36218 a 45,15 0 1 1 -90,0 45,15 0 1 1 90,0 z"
+       d="m 1170,477.36218 c 0,8.28427 -20.1472,15 -45,15 -24.8528,0 -45,-6.71573 -45,-15 0,-8.28427 20.1472,-15 45,-15 24.8528,0 45,6.71573 45,15 z"
        transform="matrix(0.7407251,0,0,0.7407251,401.41864,94.480706)" />
     <flowRoot
        transform="matrix(0.7407251,0,0,0.7407251,433.04494,160.48377)"
@@ -2131,7 +2131,7 @@
        sodipodi:cy="387.36218"
        sodipodi:rx="60"
        sodipodi:ry="25"
-       d="m 1200,387.36218 a 60,25 0 1 1 -120,0 60,25 0 1 1 120,0 z"
+       d="m 1200,387.36218 c 0,13.80712 -26.8629,25 -60,25 -33.1371,0 -60,-11.19288 -60,-25 0,-13.80712 26.8629,-25 60,-25 33.1371,0 60,11.19288 60,25 z"
        transform="matrix(0.59522554,0,0,0.43385329,650.7246,200.6697)" />
     <flowRoot
        transform="matrix(0.7407251,0,0,0.7407251,516.22181,80.086072)"
@@ -2185,7 +2185,7 @@
        sodipodi:cy="665.47375"
        sodipodi:rx="10.101525"
        sodipodi:ry="10.101525"
-       d="m 1139.4521,665.47375 a 10.101525,10.101525 0 1 1 -20.203,0 10.101525,10.101525 0 1 1 20.203,0 z"
+       d="m 1139.4521,665.47375 c 0,5.57892 -4.5226,10.10153 -10.1015,10.10153 -5.5789,0 -10.1015,-4.52261 -10.1015,-10.10153 0,-5.57891 4.5226,-10.10152 10.1015,-10.10152 5.5789,0 10.1015,4.52261 10.1015,10.10152 z"
        transform="matrix(0.56249999,0,0,0.56249999,394.01964,-123.77141)" />
     <path
        sodipodi:type="arc"
@@ -2195,7 +2195,7 @@
        sodipodi:cy="665.47375"
        sodipodi:rx="10.101525"
        sodipodi:ry="10.101525"
-       d="m 1139.4521,665.47375 a 10.101525,10.101525 0 1 1 -20.203,0 10.101525,10.101525 0 1 1 20.203,0 z"
+       d="m 1139.4521,665.47375 c 0,5.57892 -4.5226,10.10153 -10.1015,10.10153 -5.5789,0 -10.1015,-4.52261 -10.1015,-10.10153 0,-5.57891 4.5226,-10.10152 10.1015,-10.10152 5.5789,0 10.1015,4.52261 10.1015,10.10152 z"
        transform="matrix(0.56249999,0,0,0.56249999,393.31173,-80.82397)" />
     <path
        sodipodi:type="arc"
@@ -2205,7 +2205,7 @@
        sodipodi:cy="589.14789"
        sodipodi:rx="62.142857"
        sodipodi:ry="24.642857"
-       d="m 1383.5714,589.14789 a 62.142857,24.642857 0 1 1 -124.2857,0 62.142857,24.642857 0 1 1 124.2857,0 z"
+       d="m 1383.5714,589.14789 c 0,13.60987 -27.8223,24.64285 -62.1428,24.64285 -34.3206,0 -62.1429,-11.03298 -62.1429,-24.64285 0,-13.60988 27.8223,-24.64286 62.1429,-24.64286 34.3205,0 62.1428,11.03298 62.1428,24.64286 z"
        transform="matrix(0.7407251,0,0,0.7407251,374.40437,112.06916)" />
     <flowRoot
        transform="matrix(0.7407251,0,0,0.7407251,480.04201,253.48631)"
