@@ -1,11 +1,11 @@
 Manus:
 
 Jeg har arbeidet med klokkeløst design, siden dette er en interesant
-innfallsvinkel på digitalt kretsdesign. Klokkeløse kretser har også 
-interesante egenskaper, så som lavt effektforbruk, robusthet i forhold til 
+innfallsvinkel på digitalt kretsdesign. Klokkeløse kretser har
+interesante egenskaper, som lavt effektforbruk og robusthet i forhold til 
 forsinkelser og varierende operasjonsbetingelser som spenning og 
 temperatur. De har også lav elektromagnetisk emisjon, som på
-vanlige kretser domineres av klokkesignalet og dens harmonier.
+vanlige kretser domineres av klokkesignalet og harmonier.
 
 Jeg har i prosjektet studert teorien til det som kreves for å designe
 kretser som oppfører seg korrekt uten klokke, og sett på forskjellige
