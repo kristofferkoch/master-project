@@ -442,7 +442,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
      inkscape:cx="781.55154"
-     inkscape:cy="531.26477"
+     inkscape:cy="474.12191"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -617,7 +617,7 @@
            x="113.13708"
            y="294.74777"
            style="font-size:16px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;text-anchor:start;font-family:Arial;-inkscape-font-specification:AlArabiya Italic" /></flowRegion><flowPara
-         id="flowPara3710">In this project, design of clockless design is explored. A clockless AES encryption module is designed, showing the feasability of  implementing complex clockless circuits. Methods for production testing are also found.</flowPara></flowRoot>    <path
+         id="flowPara3710">In this project, design of clockless design is explored. A clockless AES encryption module was designed, showing the feasability of  implementing complex clockless circuits. Methods for production testing was also found.</flowPara></flowRoot>    <path
        style="fill:none;stroke:#0000ff;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        d="m -2.0203051,165.65127 1493.0055051,0"
        id="path3714" />
@@ -641,7 +641,7 @@
        xml:space="preserve"
        id="flowRoot3726"
        style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
-       transform="translate(32.741071,-13.428601)"><flowRegion
+       transform="translate(32.741071,-5.428601)"><flowRegion
          id="flowRegion3728"><rect
            id="rect3730"
            width="388.6875"
@@ -1500,7 +1500,7 @@
        xml:space="preserve"
        id="flowRoot3726-1"
        style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
-       transform="translate(32.12903,296.82161)"><flowRegion
+       transform="translate(32.12903,300.82161)"><flowRegion
          id="flowRegion3728-2"><rect
            id="rect3730-2"
            width="388.6875"
@@ -1523,7 +1523,7 @@
            x="48.57143"
            y="369.50504"
            style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;text-anchor:start;font-family:Arial;-inkscape-font-specification:Arial" /></flowRegion><flowPara
-         id="flowPara7631">It is feasible to design clockless circuits in high-level languages. . </flowPara><flowPara
+         id="flowPara7631">It is feasible to design complex clockless circuits in high-level languages.</flowPara><flowPara
          id="flowPara3734-8-5" /></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot3718-2"
