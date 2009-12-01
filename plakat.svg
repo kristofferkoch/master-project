@@ -442,7 +442,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
      inkscape:cx="781.55154"
-     inkscape:cy="474.12191"
+     inkscape:cy="531.26477"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -1809,7 +1809,7 @@
            style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;text-anchor:start;font-family:Arial;-inkscape-font-specification:Arial" /></flowRegion><flowPara
          id="flowPara6240">Philips pioneered by developing the Tangram language and the cababilities of this new language was demonstrated by creating complex clockless circuits, such as a DES encryption core, low power hearing aids and even processor cores. At Manchester University, a similar language, Balsa, was designed and released to the public domain, facilitating further research on the topic.</flowPara><flowPara
          id="flowPara6254" /><flowPara
-         id="flowPara6256">For this project, an AES encryption core was designed in the Balsa-language, and a new synthesis tool with support for automatic optimisations, Teak, was used to map the circuit into a working Verilog netlist. A survey was done to find methods for inserting scan-chains for testing.</flowPara><flowPara
+         id="flowPara6256">For this project, an AES encryption core was designed in the Balsa-language, and a new synthesis tool with support for automatic optimisations, Teak, was used to map the circuit into a working Verilog netlist. A survey was done to find methods for insertion of scan-chains for testing.</flowPara><flowPara
          id="flowPara6250" /><flowPara
          id="flowPara6252" /></flowRoot>    <g
        id="g7839"
