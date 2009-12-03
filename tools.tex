@@ -128,5 +128,11 @@ scan chain which is compatible with existing ATPG tools.
 
 It is important to note that the scan-chain insertion is done at the
 technology-mapping stage, allowing the designer to insert test-logic
-in the final stage of the design-flow.
+into the library of components. For Balsa and Teak, this will require
+some modifications of the compilers.
+
+As the testing is done synchronously, it also means that a global
+clock have to be implemented. However, this clock has more relaxed
+requirements than that of an clocked circuit, since the clock used for
+testing runs at lower speeds than the circuit itself is capable of.
 
