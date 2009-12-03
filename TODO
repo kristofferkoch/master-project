@@ -1,0 +1,19 @@
+aes.tex:125:$P_0 = a(x)$, $P_{i+1}(x) = P_i(x)*a(x)$ XXX check) and then add them as $q(x) =
+discussion.tex:3:XXX
+implementation.tex:56:   \item 1 32-bit mixcolumn circuit employing XXX ``doublers''
+implementation.tex:82:  as of this writing, not publicly available, kindly supplied by XXX
+introduction.tex:20:with memory elements interspersed (XXX Figure!). The value of a memory
+introduction.tex:48:  allowing a higher degree of modularity and reuseability. [XXX Sparsø
+introduction.tex:72:sufficiently researched. XXX. Write more
+theory.tex:3:XXX intro
+theory.tex:67:focus XXX on high-level synthesis that is agnostic on the underlying
+theory.tex:72:XXX introductory summary of techniques
+theory.tex:77:  \caption{Bundled data XXX}
+theory.tex:105:XXX Indication and the muller-C element
+theory.tex:115:  \caption{A memory element with completion detection. Figure from XXX.}
+theory.tex:126:XXX figure showing dual rail inverter, a dual-rail gate and a ``truth
+theory.tex:136:Hazards are avoided by adding redundant gates XXX
+theory.tex:142:compared to XXX. I terms of wiring, 1 of 4 encoding demands no more
+theory.tex:145:XXX mention Fant advanced pipelining, williams bubbles etc?
+theory.tex:149:XXX
+tools.tex:53:There are multiple circuits implemented in Tangram/Haste. XXX list and

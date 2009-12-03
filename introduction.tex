@@ -1,11 +1,11 @@
 \section{Introduction}
 
 In this project, I will investigate options for synthesizing digital
-circuits without clocks. A prerequisite for such a solutions is a
+circuits without clocks. A prerequisite for such a solution is a
 high-level language that ultimately can create circuits for
 implementation in silicon. I will also implement an encryption circuit
-for the AES-standard with one of these technologies and attempt to
-identify challenges and possibilities with such a solution.
+for the AES-standard with one of these technologies, and attempt to
+identify challenges and potential with such a solution.
 
 One major assumption in the majority of digital VLSI circuits produced
 today, is the notion of a discrete and common time. This is provided
@@ -16,10 +16,10 @@ the task of providing a clock-signal simultaneously to all flip-flops
 in the circuit becomes an increasingly difficult task.
 
 When designing a digital circuit for solving a computable problem, it
-is usual to split the problem into multiple combinatorial circuits
-with memory elements between them (XXX Figure!). The value of a memory
+is usual to split the problem into multiple combinational circuits
+with memory elements interspersed (XXX Figure!). The value of a memory
 element is then determined by the value of the previous memory element
-modified by a combinatorial circuit. However, this combinatorial
+modified by a combinational circuit. However, this combinational
 circuit has a non-zero delay, and there is usually no reliable way to
 determine when the output value has been completely calculated. With
 clocked circuits, the completeness of a calculation is guaranteed by
@@ -61,7 +61,7 @@ interesting characteristics: \begin{itemize}
 
 When mapping high-level description hardware-languages to silicon,
 there must also be implemented a form of completion-detection for the
-combinatorial circuits to drive the memory-elements instead of the
+combinational circuits to drive the memory-elements instead of the
 clock. I will outline some of these techniques in this project, but
 common for them all is that they impose overhead in the form of
 reduced speed and increased area, power and complexity.
@@ -69,8 +69,4 @@ reduced speed and increased area, power and complexity.
 Another issue with clockless circuits is that it is a relatively young
 discipline. There is not an industry-wide adoption, nor experience
 with clockless design. Testing is one obstacle that has not been
-sufficiently researched. 
-
-Scratchpad: Asynchronous design demands an open mind. Attempts to
-directly convert clocked circuits into clockless ones is ``doomed to
-fail''. Wave pipelining?
+sufficiently researched. XXX. Write more
