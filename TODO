@@ -1,4 +1,5 @@
-aes.tex:125:$P_0 = a(x)$, $P_{i+1}(x) = P_i(x)*a(x)$ XXX check) and then add them as $q(x) =
+aes.tex:167:performances up to XXX has been acheived \cite{xxx}.
+conclusion.tex:3:XXX
 discussion.tex:3:XXX
 implementation.tex:56:   \item 1 32-bit mixcolumn circuit employing XXX ``doublers''
 implementation.tex:82:  as of this writing, not publicly available, kindly supplied by XXX
@@ -13,7 +14,6 @@ theory.tex:105:XXX Indication and the muller-C element
 theory.tex:115:  \caption{A memory element with completion detection. Figure from XXX.}
 theory.tex:126:XXX figure showing dual rail inverter, a dual-rail gate and a ``truth
 theory.tex:136:Hazards are avoided by adding redundant gates XXX
-theory.tex:142:compared to XXX. I terms of wiring, 1 of 4 encoding demands no more
 theory.tex:145:XXX mention Fant advanced pipelining, williams bubbles etc?
 theory.tex:149:XXX
 tools.tex:53:There are multiple circuits implemented in Tangram/Haste. XXX list and

@@ -62,9 +62,14 @@ The Rijandael cipher work in a finite field. The field is realized as
 all polynomials modulo the irreducivle polynomial $f(x) = x^8 + x^4 +
 x^3 + x + 1$ over $\mathbb{F}_2$. This is called the ``Rijandael
 field'', and $\mathbb{F}_{2^8}$ is often used to denote the field with
-256 element. Each element can also be represented as a 8-bit byte. All
-operations on elements in this field results in an element within the
-field. The field supports addition and multiplication between two
+256 elements.
+
+Each element can also uniqly be represented as a 8-bit byte, $\{b_7
+b_6 b_5 b_4 b_3 b_2 b_1 b_0\}$ meaning $\sum_{i=0}^7 b_i x^i$, where
+$b_i \in \mathbb{F}_2 = \{0,1\}$, . The polynomial $x^2 + 1$ can
+thereby be represented as $\{00000101\}$, or hexadecimaly as $\{05\}$.
+All operations on elements in this field results in an element within
+the field. The field supports addition and multiplication between two
 field elements.
 
 The $SubBytes$ routing subtitutes all bytes using $y = A x^{-1} + b$.
@@ -118,6 +123,7 @@ by multiplying them with the matrix
     1 & 1 & 2 & 3 \\
     3 & 1 & 1 & 2
   \end{pmatrix}
+  \label{eq:mixcol}
 \end{equation}
 in the galois field. Multiplication, $q(x)=a(x) \otimes b(x)$, in the
 galois field can be performed by generating up to eight partial
@@ -130,11 +136,11 @@ iterativly as
   P_i = 
   \begin{cases}
     a(x) & \text{if} \quad i = 0 \\
-    P_{i-1} a(x) & \text{if} \quad i > 0
+    x P_{i-1}(x) & \text{if} \quad i > 0
   \end{cases}
   \label{eq:gfdouble}
 \end{equation}
-and then add the partial products, yielding the result as
+and then adding the partial products, yielding the result as
 \begin{equation}
   q(x) = \sum_{i=0}^{7} P_i(x) b_i
   \label{eq:addpart}
@@ -143,7 +149,8 @@ and then add the partial products, yielding the result as
 performs the additions in the Galois field, i.e. it sums with
 xor. Each iteration with $i > 0$ in \eqref{eq:gfdouble} can be seen as
 a ``doubling'' in the galois field, making the multiplication an
-analog to peasant's multiplication in \eqref{eq:addpart}.
+analog to peasant's multiplication in \eqref{eq:addpart}. The
+``doubling'' can be implemented with a shift and 3 xor gates.
 
 $AddRoundKey$ performs simple addition of the expanded key and the
 state in the galois field. This addition can be implemented by simple
@@ -154,21 +161,21 @@ $SubBytes$ transformation as well.
 \subsection{Performance of the AES}
 
 As a reference of the relative performance of the AES, a simple
-benchmark was done on a computer. The results are shown in
-table~\ref{tab:aes}. On VLSI, performances up to XXX has been acheived
-\cite{xxx}.
+benchmark was done on a computer\footnote{openssl version
+  0.9.8g. Measurement performed with the command ``openssl time
+  aes''.}. The results are shown in table~\ref{tab:aes}. On VLSI,
+performances up to XXX has been acheived \cite{xxx}.
 
 \begin{table}[h]
   \centering
   \begin{tabular}{|c|c|}
+    \hline
     \emph{Key size} & \emph{Throughput} \\ \hline
     128 bits        & 111 MB/s \\
     192 bits        & 94.7 MB/s \\
-    256 bits        & 82.3 MB/s \hline
+    256 bits        & 82.3 MB/s \\ \hline
   \end{tabular}
-  \caption{Performance of AES on an Intel Pentium 4 2.8 GHz
-    CPU\footnote{openssl version 0.9.8g. Measurement performed with
-      the command ``openssl time aes''.}.}
+  \caption{Performance of AES on an Intel Pentium 4 2.8 GHz CPU.}
   \label{tab:aes}
 \end{table}
 
@@ -243,29 +250,35 @@ it will inflict.
 
 The decryption is rougly the algorithms performed inversely with
 reverse operations for $SubBytes$, $ShiftRows$, $MixColumns$ and
-$AddKey$. $SubBytes^{-1}$, implemented combinationally, is the same
-operation as $SubBytes$, except for the relativily short linear
-transform and multiplexers choosing the inverse or normal
-transformations. $ShiftRows^{-1}$ has, like $ShiftRows$, the simplest
-implementation as wires. $MixColumns^{-1}$ uses different and larger
-coefficients than $MixColumns$, demanding 2 more partial products to
-be calculated in the galois field multiplications, and thereby causing
-longer delays. The calculation of the partial products can be shared
-between $MixColumns$ and its inverses. For $AddRoundKey^{-1}$, the
-same hardware can be used as in $AddRoundKey$. The keyschedule for the
-decryption is the same as for encryption.
+$AddKey$: 
+\begin{itemize}
+  \item $SubBytes^{-1}$, implemented combinationally, is the same
+    operation as $SubBytes$, except for the relativily short linear
+    transform, which needs an inverse. 
+  \item $ShiftRows^{-1}$ has, like $ShiftRows$, the simplest
+    implementation as wires. 
+  \item $MixColumns^{-1}$ uses different and larger coefficients
+    than $MixColumns$ \eqref{eq:mixcol}, demanding 2 more partial
+    products \eqref{eq:gfdouble} to be calculated in the
+    galois field multiplications, and thereby causing longer
+    delays. The calculation of the partial products can be shared
+    between $MixColumns$ and its inverses. 
+  \item $AddRoundKey^{-1}$ can use the same hardware as
+    $AddRoundKey$. 
+\end{itemize}
+The keyschedule for the decryption is the same as for encryption.
 
 Expanding the algorithm to key sizes of 192 and 256 bit requires
-changes to the control logic, and the key schedule as well as to the
-mere sizes of the key registers. The control logic must be changed as
-128, 192, and 256 bit keys respectivily requires 10, 12, and 14
-$Round$s to be performed. The key schedule also demands an extension
-of the control logic to support the larger key sizes.
+expansion of the key registers and changes to the control logic and
+the key schedule. The control logic must be changed, as 128, 192, and
+256 bit keys respectivily requires 10, 12, and 14 $Round$s to be
+performed. The key schedule also demands an extension of the control
+logic to support the larger key sizes.
 
 Implementing decryption alongside with encryption will, as discussed
 above, have negative effect on the performance, as there will be a
 greater control overhead. The area will also increase, but as most of
-the operations can be generalized to also work in inverse, the area
+the operations can be generalized to also provide an inverse, the area
 overhead should not be dramatic. Expansion of the supported key sizes,
 in addition to the obvious demand of larger registers, only requires
 minor expansion of the control logic.
