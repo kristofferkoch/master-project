@@ -163,6 +163,17 @@ even $SubBytes$ itself when implemented combinationally as in
 series as shown in figure~\ref{fig:unroll}. I will here describe 3
 modes of operation to illustrate when unrolling can be beneficial.
 
+\begin{figure}[htbb]
+  \subfigure{\label{fig:ecbpicta}}
+  \includegraphics{tux.jpeg}
+  \subfigure{\label{fig:ecbpictb}}
+  \includegraphics{tux_ecb.jpeg}
+  \subfigure{\label{fig:ecbpictc}}
+  \includegraphics{noise.png}
+  \caption{blah}
+  \label{fig:ecbpict}
+\end{figure}
+
 When encrypting a plaintext with a length over 128 bits, the most
 straightforward way is to split the plaintext into 128-bit blocks and
 encrypt them individually. This is called the electronic codebook mode
