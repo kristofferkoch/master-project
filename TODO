@@ -17,3 +17,4 @@ theory.tex:136:Hazards are avoided by adding redundant gates XXX
 theory.tex:145:XXX mention Fant advanced pipelining, williams bubbles etc?
 theory.tex:149:XXX
 tools.tex:53:There are multiple circuits implemented in Tangram/Haste. XXX list and
+tools.tex:109:circuit. XXX need figure and cite.

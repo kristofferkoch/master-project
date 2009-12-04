@@ -1,5 +1,8 @@
 
-all: top.pdf
+all: top.pdf TODO
+
+TODO: *.tex
+	grep -in xxx *.tex  >TODO
 
 top.pdf: *.tex boker.bib tangtool.pdf handbuffer.pdf c.pdf handshake.pdf \
 	bundled.pdf compdet.pdf aesctrl.pdf teaklib.pdf
@@ -7,6 +10,7 @@ top.pdf: *.tex boker.bib tangtool.pdf handbuffer.pdf c.pdf handshake.pdf \
 	bibtex top
 	pdflatex top
 	pdflatex top
+
 
 .SUFFIXES: .svg .pdf
 .svg.pdf:
