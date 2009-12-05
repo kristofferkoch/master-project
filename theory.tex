@@ -2,18 +2,25 @@
 
 Usually, when designing digital circuits, two major simplifications
 are made: Signals are represented as digital values, and the time is
-divided into discrete steps. Theese simplifications makes it
-meaningful to talk about exact momentarily states of the
-circuits, that is the contents of memory elements.
+divided into discrete steps by the means of a clock. The clock defines
+the times when all data at registers are valid, and is set to a
+period safe to all critical paths in the circuit.
 
 When designing clockless circuits, the second simplification no longer
-holds. The time is non-discrete, and events can no longer been seen as
-concurrent, unless explicit synchronization is performed. Timing and
-data validity must be guaranteed by other means than a clock.
+holds. The time is non-discrete, and a more concurrent understanding
+is needed, with explicit synchronization between interacting signals
+and calculations.
 
 In this section, I will discuss the technical basis of clockless
 design, while design tools for high level design will be discussed in
 section~\ref{sec:tools}.
+
+The strictest class of clockless circuits, delay insensive (DI)
+circuits, assumes only bounded and positive, but unknown, delays in
+wires and gates. Such circuits can only be constructed of C-elements
+and inverters. The C-element shown in figure~\ref{fig:c}, and
+variations of it, is often used in clocked circuits to provide storage
+and correct sequencing in clockless protocols.
 
 \begin{figure}[htbp]
   \centering
@@ -24,13 +31,6 @@ section~\ref{sec:tools}.
     constructs.}
   \label{fig:c}
 \end{figure}
-
-The strictest class of clockless circuits, delay insensive (DI)
-circuits, assumes only bounded and positive, but unknown, delays in
-wires and gates. Such circuits can only be constructed of C-elements
-and inverters. The C-element shown in figure~\ref{fig:c}, and
-variations of it, is often used in clocked circuits to provide storage
-and correct sequencing in clockless protocols.
 
 In \cite{dilimit} it is shown that it is impossible to create any
 useful circuits with the restrictions of DI. The article suggests the
@@ -59,25 +59,33 @@ function has a QDI implementation.
   \centering
   \includegraphics{handshake.pdf}
   \caption{A clockless pipeline implemented with handshaking ensuring
-    data validity. Figure from \cite{sparso}.}
+    data validity. The channels are bundled data four phase push
+    channels. Figure from \cite{sparso}.}
   \label{fig:handshake}
 \end{figure}
 
-When designing clockless circuits, we need a substitute for the clock
-to assure data validity througout the circuit. This can be provided by
-handshaking, usually implemented with a variation of the
-request-acknowledge protocol as shown in
-figure~\ref{fig:handshake}. The handshaking provides a local clock for
-the storage elements, usually latches or C-elements.
+To connect and synchronize blocks in a clockless circuits, a form of
+handshaking is usually employed, often as as a request-acknowledge
+protocol shown in figure~\ref{fig:handshake}. The handshaking provides
+a local clock for the storage elements, usually latches or C-elements.
 
-There are multiple ways to implement handshaking. This project will
-focus XXX on high-level synthesis that is agnostic on the underlying
-protocol; even clocked circuits can be synthetisised. 
+There are multiple ways to implement handshaking. Some high level
+synthesis tools, introduced in section~\ref{sec:tools}, such as Balsa,
+allows the designer to choose and evaluate multiple implementation
+styles. The Tangram/Haste language allows handshake circuits to be
+implemented as clocked circuits, making verification on regular FPGAs
+possible.
 
 \subsection{Encodings}
 
-XXX introductory summary of techniques
-
+Clocked digital circuits often use regular binary encoding where one
+wire corresponds to one bit, a high voltage corresponds to a 1 and a
+low voltage to a 0. While this encoding is possible with clockless
+circuits, it has the drawback of not indicating completion. Other
+encodings, discussed below, can also provide completion detection, an
+important property of a QDI design. Choice of encodings has also been
+shown to have significant impact on power.
+ 
 \begin{figure}[htbp]
   \centering
   \includegraphics{bundled.pdf}
@@ -85,7 +93,7 @@ XXX introductory summary of techniques
   \label{fig:bundled}
 \end{figure}
 
-When using bundled-data, values are represented by conventional
+When using bundled data, values are represented by conventional
 boolean levels, and the handshaking is implemented by bundeling the
 request and acknowledge signals with the data as shown in
 figure~\ref{fig:bundled}~a). Bundled data is also refered to as
@@ -126,9 +134,11 @@ have an ``empty'' value, also referred to as a NULL.
 When implementing combinational functions for dual rail encoding, they
 are typically split into two functions analogous to the pull up and
 pull down networks in CMOS; one to compute the logic 0 or false value,
-and one to compute the logic 1 or true value. Completion is indicated
-by one of the signals going high, and allows a completion detector as
-shown in figure~\ref{fig:compdet} to control the memory elements.
+and one to compute the logic 1 or true value. Completion is detected
+by counting the number of electrical ones, as shown in
+figure~\ref{fig:compdet}, providing either a request signal in the
+case of a push channel, or an acknowledge signal in the case of a pull
+channel.
 
 \begin{figure}[htbp]
   \centering
@@ -138,6 +148,7 @@ shown in figure~\ref{fig:compdet} to control the memory elements.
   \label{fig:drgate}
 \end{figure}
 
+
 Using dual rail encoding also implies using the four phase protocol
 (figure~\ref{fig:bundled}~b)), as the combinational circuits must
 return to the NULL state between values to distinguish successive
@@ -145,14 +156,19 @@ values on the channel. Care must therefore not only be taken to avoid
 hazards on NULL-to-value transitions, but also on the return-to-NULL
 transitions.
 
+XXX LEDR: http://portal.acm.org/citation.cfm?id=112078
+
+
 Hazards are avoided by adding redundant gates XXX
 
 A more generalized method for encoding, is N of M encodings, where
-dual rail is 1 of 2 encoding. In \cite[chapter 9]{nullconv}, multiple
-of these encodings are surveyed with regards to resources (i.e. area)
-for wires and combinations, and power. An ALU for 1 of 4 encoding are
-shown to have good characteristics in terms of power, area and
-performance, compared to the dual rail encoding. 
+dual rail is 1 of 2 encoding. All these encodings are constant-weight
+encodings, meaning that a complete signal has a certain hamming
+weight, or count of electrical ones. In \cite[chapter 9]{nullconv},
+multiple of these encodings are surveyed with regards to required
+resources (i.e. area) for wires and combinations, and power. An ALU
+for 1 of 4 encoding are shown to have good characteristics in terms of
+power, area and performance, compared to the dual rail encoding.
 
 XXX mention Fant advanced pipelining, williams bubbles etc?
 
