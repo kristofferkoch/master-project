@@ -22,10 +22,11 @@ Daemen and Rijmen, as the AES.
 Rijandael is a symmetric-key block-cipher algorithm. This means that
 encryption is defined as $c \leftarrow E_k(m)$, and decryption as $m
 \leftarrow D_k(c)$, given a key $k$, a message $m$ and a ciphertext
-$c$. Rijandael supports variable block and key sizes, but I will
-confine the description and implementation to block and key size to
-128~bits. This will not cause a big loss of generality to the working
-principle. I will also limit the implementation to encryption-only.
+$c$. Rijandael supports variouskey sizes, but I will confine the
+description and implementation to a key size to
+\unit{128}{\bit}. This will not cause a big loss of generality to the
+working principle. I will also limit the implementation to
+encryption-only.
 
 The Rijandael cipher segments a 128-bit message into 16 bytes,
 represented by a $4 \times 4$ matrix:
@@ -59,8 +60,12 @@ expansion scheme also described below. For decrypting, given the
 correct key, there exists inverse functions for each round.
 
 The Rijandael cipher work in a finite field. The field is realized as
-all polynomials modulo the irreducivle polynomial $f(x) = x^8 + x^4 +
-x^3 + x + 1$ over $\mathbb{F}_2$. This is called the ``Rijandael
+all polynomials modulo the irreducivle polynomial 
+\begin{equation}
+  f(x) = x^8 + x^4 + x^3 + x + 1
+  \label{eq:gf}
+\end{equation} 
+over $\mathbb{F}_2$. This is called the ``Rijandael
 field'', and $\mathbb{F}_{2^8}$ is often used to denote the field with
 256 elements.
 
@@ -126,8 +131,9 @@ by multiplying them with the matrix
   \label{eq:mixcol}
 \end{equation}
 in the galois field. Multiplication, $q(x)=a(x) \otimes b(x)$, in the
-galois field can be performed by generating up to eight partial
-products
+galois field is multiplication of two polonomials modulo the
+irreductible polinomial \eqref{eq:gf}. The multiplication can be
+performed by generating up to eight partial products
 \begin{equation}
   P_i(x) = a(x) x^i
 \end{equation}
@@ -140,12 +146,13 @@ iterativly as
   \end{cases}
   \label{eq:gfdouble}
 \end{equation}
-and then adding the partial products, yielding the result as
+and then adding the partial products according to the bits $b_i$ in
+$b(x)$, yielding the result as
 \begin{equation}
   q(x) = \sum_{i=0}^{7} P_i(x) b_i
   \label{eq:addpart}
 \end{equation}
-, according to the bits $b_i$ in $b(x)$. Note that the $\sum$ here
+. Note that the $\sum$ here
 performs the additions in the Galois field, i.e. it sums with
 xor. Each iteration with $i > 0$ in \eqref{eq:gfdouble} can be seen as
 a ``doubling'' in the galois field, making the multiplication an
@@ -163,17 +170,18 @@ $SubBytes$ transformation as well.
 As a reference of the relative performance of the AES, a simple
 benchmark was done on a computer\footnote{openssl version
   0.9.8g. Measurement performed with the command ``openssl time
-  aes''.}. The results are shown in table~\ref{tab:aes}. On VLSI,
-performances up to XXX has been acheived \cite{xxx}.
+  aes''.}. The results are shown in table~\ref{tab:aes}. A feasability
+study \cite{feas} shows that througput up to \unit{500}{\giga \bit
+  \per \second} should be possible on VLSI.
 
 \begin{table}[h]
   \centering
   \begin{tabular}{|c|c|}
     \hline
-    \emph{Key size} & \emph{Throughput} \\ \hline
-    128 bits        & 111 MB/s \\
-    192 bits        & 94.7 MB/s \\
-    256 bits        & 82.3 MB/s \\ \hline
+    \emph{Key size}  & \emph{Throughput} \\ \hline
+    \unit{128}{\bit} & \unit{111}{\mega \byte \per \second} \\
+    \unit{192}{\bit} & \unit{94.7}{\mega \byte \per \second} \\
+    \unit{256}{\bit} & \unit{82.3}{\mega \byte \per \second} \\ \hline
   \end{tabular}
   \caption{Performance of AES on an Intel Pentium 4 2.8 GHz CPU.}
   \label{tab:aes}
@@ -282,5 +290,3 @@ the operations can be generalized to also provide an inverse, the area
 overhead should not be dramatic. Expansion of the supported key sizes,
 in addition to the obvious demand of larger registers, only requires
 minor expansion of the control logic.
-
-

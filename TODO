@@ -1,4 +1,3 @@
-aes.tex:167:performances up to XXX has been acheived \cite{xxx}.
 conclusion.tex:3:XXX
 discussion.tex:3:XXX
 implementation.tex:56:   \item 1 32-bit mixcolumn circuit employing XXX ``doublers''
@@ -9,11 +8,10 @@ introduction.tex:72:sufficiently researched. XXX. Write more
 theory.tex:51:implementation at the transistor level, but it XXX easy. The
 theory.tex:92:  \caption{Bundled data XXX}
 theory.tex:120:XXX Indication and the muller-C element
-theory.tex:130:  \caption{A memory element with completion detection. Figure from XXX.}
-theory.tex:159:XXX LEDR: http://portal.acm.org/citation.cfm?id=112078
-theory.tex:162:Hazards are avoided by adding redundant gates XXX
-theory.tex:173:XXX mention Fant advanced pipelining, williams bubbles etc?
-theory.tex:175:XXX summary
+theory.tex:161:XXX LEDR: http://portal.acm.org/citation.cfm?id=112078
+theory.tex:163:Hazards are avoided by adding redundant gates XXX
+theory.tex:174:XXX mention Fant advanced pipelining, williams bubbles etc?
+theory.tex:176:XXX summary
 tools.tex:9:XXX Null convention logic
 tools.tex:51:There are multiple circuits implemented in Tangram/Haste. XXX list and
 tools.tex:107:circuit. XXX need figure and cite.

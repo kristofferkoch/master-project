@@ -127,7 +127,8 @@ have an ``empty'' value, also referred to as a NULL.
 \begin{figure}[htbp]
   \centering
   \includegraphics{compdet.pdf}
-  \caption{A memory element with completion detection. Figure from XXX.}
+  \caption{A memory element with completion detection. Figure from
+    \cite[pp. 21]{sparso}.}
   \label{fig:compdet}
 \end{figure}
 
@@ -138,7 +139,8 @@ and one to compute the logic 1 or true value. Completion is detected
 by counting the number of electrical ones, as shown in
 figure~\ref{fig:compdet}, providing either a request signal in the
 case of a push channel, or an acknowledge signal in the case of a pull
-channel.
+channel. The completion detector in figure~\ref{fig:compdet} is a part
+of a push channel, as the data provides the request.
 
 \begin{figure}[htbp]
   \centering
@@ -157,7 +159,6 @@ hazards on NULL-to-value transitions, but also on the return-to-NULL
 transitions.
 
 XXX LEDR: http://portal.acm.org/citation.cfm?id=112078
-
 
 Hazards are avoided by adding redundant gates XXX
 
