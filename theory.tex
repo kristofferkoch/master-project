@@ -1,10 +1,10 @@
 \section{Theory}
 
 Usually, when designing digital circuits, two major simplifications
-are made: Signals are represented as digital values, and the time is
-divided into discrete steps by the means of a clock. The clock defines
-the times when all data at registers are valid, and is set to a
-period safe to all critical paths in the circuit.
+are made: 1) Signals are represented as digital values, and 2) the
+time is divided into discrete steps by the means of a clock. The clock
+defines the times when all data at registers are valid, and is set to
+a period safe to all critical paths in the circuit.
 
 When designing clockless circuits, the second simplification no longer
 holds. The time is non-discrete, and a more concurrent understanding
@@ -40,20 +40,20 @@ useful circuits: The isochronic fork.
 \begin{figure}[htbp]
   \centering
   \includegraphics{fork.pdf}
-  \caption{A fan-out, or ``fork'', showing wire-delays delays. For the
-    fork to be isochronic, the delays $t_b$ and $t_c$ must be equal.}
+  \caption{A fan-out, or ``fork'', showing wire delays. For the
+    fork to be isochronic, the delays $d_b$ and $d_c$ must be equal.}
   \label{fig:fork}
 \end{figure}
 
 An isochronic fork is a timing assumption that requires a signal to be
 delivered simultainiously to two circuit elements on a fanout such as
 in figure~\ref{fig:fork}. This requirement requires attention in
-implementation at the transistor level, but it XXX easy. The
-isochronic fork allows the sender of a signal to assume reception with
-acknowledgement from only one of the receivers. The class of circuits
-depending on isochronic forks are said to be quasi delay insensitive
-(QDI), and in \cite{turing} it is proved that any turing computable
-function has a QDI implementation.
+implementation at the transistor level, but is not too hard to
+fulfill. The isochronic fork allows the sender of a signal to assume
+reception with acknowledgement from only one of the receivers. The
+class of circuits depending on isochronic forks are said to be quasi
+delay insensitive (QDI), and in \cite{turing} it is proved that any
+turing computable function has a QDI implementation.
 
 \begin{figure}[htbp]
   \centering
@@ -70,9 +70,9 @@ protocol shown in figure~\ref{fig:handshake}. The handshaking provides
 a local clock for the storage elements, usually latches or C-elements.
 
 There are multiple ways to implement handshaking. Some high level
-synthesis tools, introduced in section~\ref{sec:tools}, such as Balsa,
-allows the designer to choose and evaluate multiple implementation
-styles. The Tangram/Haste language allows handshake circuits to be
+synthesis tools, introduced in section~\ref{sec:tools}, allows the
+designer to choose and evaluate multiple implementation styles. The
+Tangram/Haste synthesis tool allows handshake circuits to be
 implemented as clocked circuits, making verification on regular FPGAs
 possible.
 
@@ -94,53 +94,38 @@ shown to have significant impact on power.
 \end{figure}
 
 When using bundled data, values are represented by conventional
-boolean levels, and the handshaking is implemented by bundeling the
-request and acknowledge signals with the data as shown in
+boolean levels, and the handshaking is implemented by bundling request
+and acknowledge signals with data as shown in
 figure~\ref{fig:bundled}~a). Bundled data is also refered to as
-single-rail, in contrast to dual or N-of-M rail encodings, as data is
-encoded as ordinary binary data.
+single rail, in contrast to e.g. dual rail encoding, as data is
+encoded as ordinary binary data. Usually there is no way to determine
+wether binary data from a combinatonal function is complete, delays
+matching the combinational delay in the critical path have to be
+inserted in the control path to maintain correct behaviour as shown in
+figure~\ref{fig:bundeled_delay}.
 
-As there usually are no way to determine wether binary data from a
-combinatonal function is complete, delays matching the combinational
-delay have to be inserted in the control path to maintain correct
-behaviour as shown in figure~\ref{fig:bundeled_delay}.
-
-When using handshake protocols, the handshake can be done in four or
-two phases as shown in figure~\ref{fig:bundled}~b) and c). The four
-phase protocol is also referred to as return to zero (RTZ). The two
-phase protocol makes better use of the bandwith over the wires, but
-usually the four phase protocol is preferred, as it allows for a
-simpler implementation consuming less area.
-
-In figure~\ref{fig:bundled}~a), a \emph{push} channel is shown. This means
-that the data source initiates the handshake, as opposed to when the
-consumer inititates it. A channel where the consumer initiates the
-handshake is referred to as a \emph{pull} channel.
-
-XXX Indication and the muller-C element
+\begin{table}
+  \centering
+  \begin{tabular}{|c|c|}
+    \hline
+    \emph{Electrical signal} & \emph{Interpretation} \\
+    \hline
+    0 0 & ``NULL''; no value \\
+    0 1 & false, 0 \\
+    1 0 & true, 1 \\
+    1 1 & invalid \\
+    \hline
+  \end{tabular}
+  \label{tab:dr}
+  \caption{Dual rail representation of a boolean value.}
+\end{table}
 
 If the signal is encoded into a representation using two wires per
-bit, one for each value; logic 1 (true) and logic 0 (false). This
-redundant representation provides the possibility of a variable to
-have an ``empty'' value, also referred to as a NULL. 
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics{compdet.pdf}
-  \caption{A memory element with completion detection. Figure from
-    \cite[pp. 21]{sparso}.}
-  \label{fig:compdet}
-\end{figure}
-
-When implementing combinational functions for dual rail encoding, they
-are typically split into two functions analogous to the pull up and
-pull down networks in CMOS; one to compute the logic 0 or false value,
-and one to compute the logic 1 or true value. Completion is detected
-by counting the number of electrical ones, as shown in
-figure~\ref{fig:compdet}, providing either a request signal in the
-case of a push channel, or an acknowledge signal in the case of a pull
-channel. The completion detector in figure~\ref{fig:compdet} is a part
-of a push channel, as the data provides the request.
+bit, one for each value; logic 1 (true) and logic 0 (false), it is
+possible to distinguish successive values by seperating them with an
+``empty'' value, also referred to as a ``NULL''. This encoding is
+referred to as ``dual rail'' encoding, and is summarized in
+table~\ref{tab:dr}.
 
 \begin{figure}[htbp]
   \centering
@@ -150,10 +135,59 @@ of a push channel, as the data provides the request.
   \label{fig:drgate}
 \end{figure}
 
+When implementing combinational functions for dual rail encoding, they
+are typically split into two functions analogous to the pull up and
+pull down networks in CMOS; one to compute the logic 0 or false value,
+and one to compute the logic 1 or true value. A dual rail gate
+implementation illustrating this is shown in figure~\ref{drgate},
+where one C-element is used to calculate a 1, and the other gates are
+used to calculate a 0. Dual rail gates can often be less complex than
+the example, by combining and optimizing the gates.
 
-Using dual rail encoding also implies using the four phase protocol
-(figure~\ref{fig:bundled}~b)), as the combinational circuits must
-return to the NULL state between values to distinguish successive
+A more generalized method for encoding, is N of M encodings, where
+dual rail is 1 of 2 encoding. All these encodings are constant-weight
+(N) encodings, meaning that a complete signal has a certain hamming
+weight, that is the count of electrical ones on a complete signal. In
+\cite[chapter 9]{nullconv}, multiple of these encodings are surveyed
+with regards to required resources (i.e. area) for wires and logic,
+and power. An ALU for 1 of 4 encoding are shown to have good
+characteristics in terms of power, area and performance, compared to
+the dual rail encoding.
+
+\subsection{Protocol}
+
+When using handshake protocols, the handshake can be done in four or
+two phases as shown in figure~\ref{fig:bundled}~b) and c). The four
+phase protocol is also referred to as return to zero (RTZ). The two
+phase protocol makes better use of the bandwith over the wires, but
+usually the four phase protocol is preferred, as it allows for a
+simpler implementation consuming less area.
+
+In figure~\ref{fig:bundled}~a), a \emph{push} channel is shown. This
+means that the data source initiates the handshake with the request
+signal, as opposed to when the receiver inititates it. A channel where
+the receiver initiates the handshake is referred to as a \emph{pull}
+channel.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics{compdet.pdf}
+  \caption{A memory element with completion detection. Figure from
+    \cite[pp. 21]{sparso}.}
+  \label{fig:compdet}
+\end{figure}
+
+In the case of QDI (e.g. dual-rail) encodings, completion detection
+provides either the request or acknowledge signal. Completion is
+detected by counting the number of electrical ones, as shown in
+figure~\ref{fig:compdet}, providing either a request signal in the
+case of a push channel, or an acknowledge signal in the case of a pull
+channel. The completion detector in figure~\ref{fig:compdet} provides
+the request signal, and is therefore the receiver in a push channel.
+
+Using dual rail encoding usually also implies using the four phase
+protocol (figure~\ref{fig:bundled}~b)), as the combinational circuits
+must return to the NULL state between values to distinguish successive
 values on the channel. Care must therefore not only be taken to avoid
 hazards on NULL-to-value transitions, but also on the return-to-NULL
 transitions.
@@ -162,14 +196,8 @@ XXX LEDR: http://portal.acm.org/citation.cfm?id=112078
 
 Hazards are avoided by adding redundant gates XXX
 
-A more generalized method for encoding, is N of M encodings, where
-dual rail is 1 of 2 encoding. All these encodings are constant-weight
-encodings, meaning that a complete signal has a certain hamming
-weight, or count of electrical ones. In \cite[chapter 9]{nullconv},
-multiple of these encodings are surveyed with regards to required
-resources (i.e. area) for wires and combinations, and power. An ALU
-for 1 of 4 encoding are shown to have good characteristics in terms of
-power, area and performance, compared to the dual rail encoding.
+
+\subsection{XXX}
 
 XXX mention Fant advanced pipelining, williams bubbles etc?
 

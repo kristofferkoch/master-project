@@ -4,14 +4,13 @@ implementation.tex:56:   \item 1 32-bit mixcolumn circuit employing XXX ``double
 implementation.tex:82:  as of this writing, not publicly available, kindly supplied by XXX
 introduction.tex:20:with memory elements interspersed (XXX Figure!). The value of a memory
 introduction.tex:48:  allowing a higher degree of modularity and reuseability. [XXX Sparsø
-introduction.tex:72:sufficiently researched. XXX. Write more
-theory.tex:51:implementation at the transistor level, but it XXX easy. The
+introduction.tex:72:researched. XXX. Write more
 theory.tex:92:  \caption{Bundled data XXX}
-theory.tex:120:XXX Indication and the muller-C element
-theory.tex:161:XXX LEDR: http://portal.acm.org/citation.cfm?id=112078
-theory.tex:163:Hazards are avoided by adding redundant gates XXX
-theory.tex:174:XXX mention Fant advanced pipelining, williams bubbles etc?
-theory.tex:176:XXX summary
+theory.tex:195:XXX LEDR: http://portal.acm.org/citation.cfm?id=112078
+theory.tex:197:Hazards are avoided by adding redundant gates XXX
+theory.tex:200:\subsection{XXX}
+theory.tex:202:XXX mention Fant advanced pipelining, williams bubbles etc?
+theory.tex:204:XXX summary
 tools.tex:9:XXX Null convention logic
 tools.tex:51:There are multiple circuits implemented in Tangram/Haste. XXX list and
 tools.tex:107:circuit. XXX need figure and cite.
