@@ -48,12 +48,12 @@ useful circuits: The isochronic fork.
 An isochronic fork is a timing assumption that requires a signal to be
 delivered simultainiously to two circuit elements on a fanout such as
 in figure~\ref{fig:fork}. This requirement requires attention in
-implementation at the transistor level, but is not too hard to
+implementation at the transistor level, but is not to hard to
 fulfill. The isochronic fork allows the sender of a signal to assume
 reception with acknowledgement from only one of the receivers. The
 class of circuits depending on isochronic forks are said to be quasi
 delay insensitive (QDI), and in \cite{turing} it is proved that any
-turing computable function has a QDI implementation.
+turing computable function has a possible QDI implementation.
 
 \begin{figure}[htbp]
   \centering
@@ -139,7 +139,7 @@ When implementing combinational functions for dual rail encoding, they
 are typically split into two functions analogous to the pull up and
 pull down networks in CMOS; one to compute the logic 0 or false value,
 and one to compute the logic 1 or true value. A dual rail gate
-implementation illustrating this is shown in figure~\ref{drgate},
+implementation illustrating this is shown in figure~\ref{fig:drgate},
 where one C-element is used to calculate a 1, and the other gates are
 used to calculate a 0. Dual rail gates can often be less complex than
 the example, by combining and optimizing the gates.
