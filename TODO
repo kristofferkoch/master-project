@@ -15,3 +15,12 @@ theory.tex:294:XXX summary
 tools.tex:9:XXX Null convention logic
 tools.tex:51:There are multiple circuits implemented in Tangram/Haste. XXX list and
 tools.tex:107:circuit. XXX need figure and cite.
+tools.tex:152:used in XXX. However, as shown in \cite[pp XXX]{sparso}, this is
+tools.tex:155:language Communicating Sequentaial Processes (CSP)\cite{xxx}, based on
+tools.tex:164:Tangram was used to create multiple circuiots: A XXX microprocessor,
+tools.tex:165:low power smart card XXX, and showed the practical strengths of the
+tools.tex:170:\cite{12,teakxxx}, based on a library of around 40 handshake
+tools.tex:186:University \cite{xxx}, and released to the public domain under a GPLv2
+tools.tex:190:Research have shown that handshake circuits uses little power\cite{xxx},
+tools.tex:191:but also exhibits poor performance\cite{xxx}. Work has been done to
+tools.tex:192:alleviate this\cite{xxx}, but the performance is still rougly half of
