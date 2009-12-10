@@ -247,7 +247,10 @@ connecting multiplexers to registers, choosing whether the circuit
 should operate in the normal mode, or that the regusters should be
 connected in series, making a scan-chain. Scan-chains are
 shift-registers that makes it possible to control and observe all the
-scan-enabled registers.
+scan-enabled registers. Scan-chains also allows single-stepping the
+circuit, and by stopping the clock (and traditionally the entire
+circuit), $I_{DDQ}$ tests can be performed to find shorts in the
+circuit.
 
 Figure~\ref{fig:scanint} shows a typical scan-interface. This is
 fairly standard, and equipment to interface with it is fairly
@@ -255,13 +258,17 @@ standard, and considered an industry standard. Therefore, it is
 a good idea to implement the same interface for testing for clockless
 circuit, to make it a more attractive method of producing circuits.
 
-While it is argumented in \cite[pp xxx]{sparso} that a clockless circuit
-has a high probability of deadlock in the presence of a fault, it is
-illustrated in \cite[pp xx]{fullscan} how a fault can also make a
-circuit malfunction. Furthermore, in \cite{fullscan}, methods for
+In \cite[pp. 27-28]{sparso} testing of clockless circuits is briefly
+discussed, noting that the indication-principle will cause a circuit
+with a stuck-at fault to deadlock. In \cite[pp. 26]{fullscan}, this is
+referred to as the ``acknowledge property'', and it is noted that this
+only holds for the practical unusefull class of delay-insensitive
+circuits. In the more appliciable quasi delay insensitive kind of
+circuits, isochronic forks can extend faults to not only cause a
+circuit to deadlock, but also lead to a misbehaving circuit. XXX need
+figure and cite.  Furthermore, \cite{fullscan} provides methods for
 implementing a synchronous scan-interface to clockless circuits are
 introduced and tested.
- 
 
 \subsection{Initialization and reset}
 
