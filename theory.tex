@@ -199,6 +199,70 @@ return-to-NULL transitions.
 
 Hazards are avoided by adding redundant gates XXX
 
+\subsection{Testing}
+
+When producing ICs, it is vital to ensure that the defective ICs are
+removed from the production line as soon as possible. Multiple defects
+can occur during modern fabrication that can render ICs unusable or
+limit lifetime.
+
+To determine which chips that are OK and not, testing must be
+performed. Testing methods was divided into to categories by
+\cite{xxx}: Functional testing, and structural testing.
+
+In functional testing, the circuit is tested in its normal operation
+mode, and no modifications to the circuit is needed. However, without
+good knowledge of the underlying logic of a circuit under test, only
+exhaustive testing can guarantee that the circuit will function for
+all possible inputs. For e.g. a 32-bit adder, this means that $2^64
+\approx 10^19$ vectors must be tested, which will, at an unreasonable
+high test frequency of \unit{1}{\giga \herz}, take approximatly
+\unit{$10^10$}{\seconds}, or \unit{317}{\years} to perform, leaving
+functional testing unreasonable for this circuit.
+
+Another form for functional testing, built in self test (BIST),
+utilizes e.g. an on chip processor to test the functionality present
+on the chip, and can also be used to determine the maximum safe
+operating speed of the chip, as this test runs ``at speed''. An
+example of BIST is the testing of RAM by writing and verifying all
+bits accessible. BIST is possible to implement both on clocked and
+clockless circuits.
+
+Whith structural testing, a \emph{fault model} is choosen to give a
+simplified, but reasonable model of defects that can occur. Based on
+the fault mode, test patterns are generated to cover the maximum
+number of faults, that is inputs that will yield a wrong output in the
+presence of a fault.
+
+To design-for-test (DfT) is to design hardware with modifications to
+make it more testable. More complicated circuits thant the mentioned
+32 bit adder where inputs can be controlled, and outputs observed, are
+circuits where inputs are driven by e.g. internal registers, and where
+the outputs are not directly observable. In such circuits, either
+aribtrarly long sequences must be applied to steer and observe the
+registers, or test points must be inserted.
+
+Whith clocked circuits, such test points are usually implemented by
+connecting multiplexers to registers, choosing whether the circuit
+should operate in the normal mode, or that the regusters should be
+connected in series, making a scan-chain. Scan-chains are
+shift-registers that makes it possible to control and observe all the
+scan-enabled registers.
+
+Figure~\ref{fig:scanint} shows a typical scan-interface. This is
+fairly standard, and equipment to interface with it is fairly
+standard, and considered an industry standard. Therefore, it is
+a good idea to implement the same interface for testing for clockless
+circuit, to make it a more attractive method of producing circuits.
+
+While it is argumented in \cite[pp xxx]{sparso} that a clockless circuit
+has a high probability of deadlock in the presence of a fault, it is
+illustrated in \cite[pp xx]{fullscan} how a fault can also make a
+circuit malfunction. Furthermore, in \cite{fullscan}, methods for
+implementing a synchronous scan-interface to clockless circuits are
+introduced and tested.
+ 
+
 \subsection{Initialization and reset}
 
 A clocked circuit is usually started by asserting a reset signal to
