@@ -10,10 +10,8 @@ synthesize clockless circuits, there is not an inherent limitation in
 the languages that prevents this as demonstrated in
 \cite[pp. 135-137]{sparso}.
 
-XXX Null convention logic
-
-Most of the work on high-level modeling and synthesis of clockless
-circuits is based on the CSP family of languages. The CSP language,
+Much of the work on high-level modeling and synthesis of clockless
+circuits is based on the CSP language paradigm. The CSP language,
 ``Communicating Sequential Process'' was proposed by Hoare \cite{csp},
 and is based on the mathematical theories of concurrency from process
 algebra. CSP-languages allows concurrent processes, composition of
@@ -23,18 +21,21 @@ synchronous message passing between the processes.
 \begin{figure}[htbp]
   \centering
   \includegraphics{tangtool.pdf}
-  \caption{Tangram design flow. Figure from \cite{fullscan}.}
+  \caption{Tangram design flow. Figure from \cite{fullscan}. XXX compare to TiDE}
   \label{fig:tangtool}
 \end{figure}
 
-Tangram is a high-level language in the CSP family, designed by
-Philips to define clockless circuits. The Tangram compiler generates
-what is referred to as handshake circuits, and has its own toolset and
-workflow as illustrated in Figure~\ref{fig:tangtool}. Tangram was
-later transferred from Philips to the company Handshake Solutions, and
-the name of Tangram was changed to Haste. As of this writing, Haste
-has entered a state of maintenance, and has been readsorbed into
-Philips.
+XXX Null convention logic
+
+
+Tangram is a high-level language in the CSP family, introduced by
+Philips in 1991 to define clockless circuits. The Tangram compiler
+generates what is referred to as handshake circuits, and has its own
+toolset and workflow as illustrated in
+Figure~\ref{fig:tangtool}. Tangram was later transferred from Philips
+to the company Handshake Solutions, and the name of Tangram was
+changed to Haste. As of this writing, Haste has entered a state of
+maintenance, and has been readsorbed into Philips.
 
 \begin{figure}[htbp]
   \centering
@@ -45,22 +46,33 @@ Philips.
   \label{fig:handbuffer}
 \end{figure}
 
-Handshake circuits, as defined in Tangram, consists of 40 different
-basic components that can be connected by four-phase handshake
-signalling. The components has active and passive ports, where the
-active components initiates the handshake and is said to ``push'' the
-data. Figure~\ref{fig:handbuffer}.b illustrates a handshake circuit for
-a one-place buffer. Active ports are denoted with a filled circle.
+Handshake circuits, first described in \cite{12, teakxxx}, consists of
+40 different basic components that can be connected by four-phase
+handshake signalling. The components has active and passive ports,
+where the active components initiates the handshake and is said to
+``push'' the data. Figure~\ref{fig:handbuffer}.b illustrates a
+handshake circuit for a one-place buffer. Active ports are denoted
+with a filled circle.
+
+To map handshake-circuits to hardware, the handshake components are
+replaced by their gate-level equivalents, depending on implementation
+style. Implementation styles can be bundled data, QDI, or even clocked
+for e.g. verification on conventional FPGAs. Tangram is also a so
+called syntax-directed language, meaning that each language construct
+is deterministically mapped to a handshake-component. This allows the
+designer to better understand and optimize circuits as they are
+written.
+
 
 There are multiple circuits implemented in Tangram/Haste. XXX list and
 explain different circuits.
 
-Balsa is another CSP-like language based on Tangram, and is an attempt
-to define a more expressive language. Balsa also introduces a
-intermediate file format, breeze, which contains the netlist for the
-handshake components. Breeze can later be implemented into
-standard-cell logic by. Figure~\ref{fig:balsatool} shows Balsa and
-it's related tools.
+Balsa is another CSP-like language based on the priciples from Tangram,
+and is an attempt to define a more expressive language. Balsa also
+introduces a intermediate file format, breeze, which contains the
+netlist for the handshake components. Breeze can later be implemented
+into standard-cell logic by. Figure~\ref{fig:balsatool} shows Balsa
+and it's related tools.
 
 Tangram and Balsa are referred to as being a ``syntax-directed''
 languages. This means that the silicon compiler transparently and
@@ -152,10 +164,6 @@ components are replaced with their gate-level equivalents, depending
 on implementation style. Implementation styles can be bundled data,
 QDI, or even clocked for e.g. verification on conventional FPGAs.
 
-Tangram is a so called syntax-directed language, meaning that each
-language construct is deterministically mapped to a
-handshake-component. This allows the designer to better understand and
-optimize circuits as they are written.
 
 To facilitate further research on clockless circuits whithin the
 CSP-paradigm, the language ``Balsa'' was designed at Manchester
