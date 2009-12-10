@@ -70,12 +70,12 @@ field'', and $\mathbb{F}_{2^8}$ is often used to denote the field with
 256 elements.
 
 Each element can also uniqly be represented as a 8-bit byte, $\{b_7
-b_6 b_5 b_4 b_3 b_2 b_1 b_0\}$ meaning $\sum_{i=0}^7 b_i x^i$, where
-$b_i \in \mathbb{F}_2 = \{0,1\}$, . The polynomial $x^2 + 1$ can
-thereby be represented as $\{00000101\}$, or hexadecimaly as $\{05\}$.
-All operations on elements in this field results in an element within
-the field. The field supports addition and multiplication between two
-field elements.
+b_6 b_5 b_4 b_3 b_2 b_1 b_0\}$ yielding the polynomial $\sum_{i=0}^7
+b_i x^i$, where $b_i \in \mathbb{F}_2$ where $\mathbb{F}_2 =
+\{0,1\}$. The polynomial $x^2 + 1$ can thereby be represented as
+$\{00000101\}$, or hexadecimaly as $\{05\}$.  All operations on
+elements in this field results in an element within the field. The
+field supports addition and multiplication between two field elements.
 
 The $SubBytes$ routing subtitutes all bytes using $y = A x^{-1} + b$.
 %%  where $

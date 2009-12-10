@@ -131,7 +131,9 @@ table~\ref{tab:dr}.
   \centering
   \includegraphics{drgate.pdf}
   \caption{a) A dual rail inverter. b) A strongly indicating dual rail
-    and-gate, and c) the simulated and-gate.}
+    and-gate, and c) the simulated and-gate. Note that the output is
+    not showing a value until both inputs does, and that the value is
+    held until \emph{both} imputs are returned to ``NULL''.}
   \label{fig:drgate}
 \end{figure}
 
@@ -196,6 +198,30 @@ taken to avoid hazards on NULL-to-value transitions, but also on the
 return-to-NULL transitions.
 
 Hazards are avoided by adding redundant gates XXX
+
+\subsection{Initialization and reset}
+
+A clocked circuit is usually started by asserting a reset signal to
+put it in a defined state,and then releasing the reset signal to let
+the circuit start operating. The reset signal is either said to be
+synchronous or asynchronous with regards to the global clock. A
+synchronous reset signal must, as other signals, arrive within the
+setup and hold times of the flip flops. An asynchronous reset must be
+released simultainously across the whole circuit, a problem which is
+as hard as distributing a global clock.
+
+Not all parts of a circuit usually needs to be set in a known state
+for a circuit to operate correctly. E.g. a circuit that receives some
+input into registers, processes the data, and then outputs the
+results, need not to reset the data-registers as they will be
+overwritten before the register content is used in the calculations.
+
+Clockless circuits also need initialization, but based on the
+read-after-write principle illustrated above, in principle only the
+top-most control circuit needs initialization, which then initializes
+sub circuits with handshaking when needed. This method of
+initialization is generally used in handshake circuits described
+in~\ref{sec:tools}.
 
 \subsection{XXX}
 

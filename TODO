@@ -6,10 +6,10 @@ introduction.tex:20:with memory elements interspersed (XXX Figure!). The value o
 introduction.tex:48:  allowing a higher degree of modularity and reuseability. [XXX Sparsø
 introduction.tex:72:researched. XXX. Write more
 theory.tex:92:  \caption{Bundled data XXX}
-theory.tex:198:Hazards are avoided by adding redundant gates XXX
-theory.tex:200:\subsection{XXX}
-theory.tex:202:XXX mention Fant advanced pipelining, williams bubbles etc?
-theory.tex:204:XXX summary
+theory.tex:200:Hazards are avoided by adding redundant gates XXX
+theory.tex:202:\subsection{XXX}
+theory.tex:204:XXX mention Fant advanced pipelining, williams bubbles etc?
+theory.tex:206:XXX summary
 tools.tex:9:XXX Null convention logic
 tools.tex:51:There are multiple circuits implemented in Tangram/Haste. XXX list and
 tools.tex:107:circuit. XXX need figure and cite.
