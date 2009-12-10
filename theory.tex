@@ -207,18 +207,18 @@ can occur during modern fabrication that can render ICs unusable or
 limit lifetime.
 
 To determine which chips that are OK and not, testing must be
-performed. Testing methods was divided into to categories by
+performed. Testing methods was divided into two categories by
 \cite{xxx}: Functional testing, and structural testing.
 
 In functional testing, the circuit is tested in its normal operation
 mode, and no modifications to the circuit is needed. However, without
 good knowledge of the underlying logic of a circuit under test, only
 exhaustive testing can guarantee that the circuit will function for
-all possible inputs. For e.g. a 32-bit adder, this means that $2^64
-\approx 10^19$ vectors must be tested, which will, at an unreasonable
-high test frequency of \unit{1}{\giga \hertz}, take approximatly
-$10^10$ s, or 317 years to perform, leaving functional testing
-unreasonable for this circuit.
+all possible inputs. For e.g. a 32-bit adder, this means that $2^{64}
+\approx 10^{19}$ vectors must be tested, which will, at an
+unreasonable high test frequency of \unit{1}{\giga \hertz}, take
+approximatly \unit{10^{10}}{\second}, or 317 years to perform, leaving
+functional testing unreasonable for this circuit.
 
 Another form for functional testing, built in self test (BIST),
 utilizes e.g. an on chip processor to test the functionality present

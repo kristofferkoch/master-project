@@ -135,3 +135,68 @@ clock have to be implemented. However, this clock has more relaxed
 requirements than that of an clocked circuit, since the clock used for
 testing runs at lower speeds than the circuit itself is capable of.
 
+\section{new tool}
+
+To design complex digital circuits, tools for reduction and management
+of complexity is needed. Usually, the designer expres the behaviour of
+circuits in a hardware description language (HDL), which provides an
+abstraction over the underlying hardware.
+
+Languages such as Verilog and VHDL are used to model and simulate
+behaviour of digital circuits, and while not all Verilog and VHDL
+programs can be synthetizised, a well defined subset can.
+
+Clocked circuits are often expressed in theese languages, but there is
+nothing inherent in the languages that prevent a designer from
+expressing a clockless circuit. In fact, methods for this have been
+used in XXX. However, as shown in \cite[pp XXX]{sparsø}, this is
+rather cumbersome, and most of the work done on HDLs for clockless
+circuits are founded on the programming paradigm introduced with the
+language Communicating Sequentaial Processes (CSP)\cite{xxx}, based on
+mathematical foundations from process algebra.
+
+As the name partly implies, CSP is baesd on connecting many processes
+together whith handshake channels. The most known language based on
+CSP is Tangram, designed in 1991 by Philips. Tangram was later split
+out to its own company, and changed name to Hast due to trademarking
+issues. Haste has now been readsorbed into Philips.
+
+Tangram was used to create multiple circuiots: A XXX microprocessor,
+low power smart card XXX, and showed the practical strengths of the
+language, design tools,  and clockless circuit design as a
+whole.
+
+Tangram emits handshake circuits, first described in
+\cite{12,teakxxx}, based on a library of around 40 handshake
+components, whith some of theese shown in
+figure~\ref{fig:hs}. Figure~\ref{fig:hsbuf} show an one-place buffer
+handshake circuit, whith the explicit equest and acknowledge signals
+drawn on top. To implement such circuits to hardware, the handshake
+components are replaced with their gate-level equivalents, depending
+on implementation style. Implementation styles can be bundled data,
+QDI, or even clocked for e.g. verification on conventional FPGAs.
+
+Tangram is a so called syntax-directed language, meaning that each
+language construct is deterministically mapped to a
+handshake-component. This allows the designer to better understand and
+optimize circuits as they are written.
+
+To facilitate further research on clockless circuits whithin the
+CSP-paradigm, the language ``Balsa'' was designed at Manchester
+University \cite{xxx}, and released to the public domain under a GPLv2
+license \cite{gpl}. The most complex circuit designed with the balsa
+tools, is a clockless ARM\cite{arm} compatible CPU\cite{spa}.
+
+Research have shown that handshake circuits uses little power\cite{xxx},
+but also exhibits poor performance\cite{xxx}. Work has been done to
+alleviate this\cite{xxx}, but the performance is still rougly half of
+clocked equivalents.
+
+To explore and facilitate experiments with automatic optimizations,
+and to create more data-flow oriented circuits, ``Teak''\cite{teak}
+was recently created, compiling Balsa-programs to a reduced set of 8
+different teak-compontents. Teak currently performs worse than the
+more mature synthesis tools, but have more room for experimentation
+and improvement at the compiler level.
+
+
