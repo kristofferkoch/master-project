@@ -7,9 +7,11 @@ introduction.tex:48:  allowing a higher degree of modularity and reuseability. [
 introduction.tex:72:researched. XXX. Write more
 theory.tex:92:  \caption{Bundled data XXX}
 theory.tex:200:Hazards are avoided by adding redundant gates XXX
-theory.tex:202:\subsection{XXX}
-theory.tex:204:XXX mention Fant advanced pipelining, williams bubbles etc?
-theory.tex:206:XXX summary
+theory.tex:211:\cite{xxx}: Functional testing, and structural testing.
+theory.tex:258:While it is argumented in \cite[pp xxx]{sparso} that a clockless circuit
+theory.tex:290:\subsection{XXX}
+theory.tex:292:XXX mention Fant advanced pipelining, williams bubbles etc?
+theory.tex:294:XXX summary
 tools.tex:9:XXX Null convention logic
 tools.tex:51:There are multiple circuits implemented in Tangram/Haste. XXX list and
 tools.tex:107:circuit. XXX need figure and cite.
