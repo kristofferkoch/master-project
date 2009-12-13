@@ -1,8 +1,9 @@
 conclusion.tex:3:XXX
 discussion.tex:9:contained XXX lines. This also includes the test-bench enclosure,
 discussion.tex:33:programs was quite straighforward. As also noted in \cite{xxx}, Balsa
-implementation.tex:56:   \item 1 32-bit mixcolumn circuit employing XXX ``doublers''
-implementation.tex:82:  as of this writing, not publicly available, kindly supplied by XXX
+implementation.tex:63:given in \cite{xxxcsbox}.
+implementation.tex:69:   \item 1 32-bit mixcolumn circuit employing XXX ``doublers''
+implementation.tex:95:  as of this writing, not publicly available, kindly supplied by XXX
 introduction.tex:20:with memory elements interspersed (XXX Figure!). The value of a memory
 theory.tex:92:  \caption{Bundled data XXX}
 theory.tex:200:Hazards are avoided by adding redundant gates XXX
