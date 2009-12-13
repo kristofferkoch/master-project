@@ -45,8 +45,7 @@ interesting characteristics: \begin{itemize}
   noticeable spikes in the electromagnetic spectrum.
 
 \item The whole problem of clock domain crossing is sidestepped,
-  allowing a higher degree of modularity and reuseability. [XXX Sparsø
-    ref: 67 (1950!), 57, 108, 97, 94]
+  allowing a higher degree of modularity and reuseability.
 
 \item Clockless designs are more robust to process technologies and
   operating conditions. The speed of clockless circuits automaticly
@@ -66,9 +65,16 @@ clock. I will outline some of these techniques in this project, but
 common for them all is that they impose overhead in the form of
 reduced speed and increased area, power and complexity.
 
-XXX: WHy AES \cite{claes}.
-
 A major issue with clockless circuits, is that it is a relatively
 young discipline without an industry-wide adoption, or widespread
-experience. Testing is one obstacle that has not been sufficiently
-researched. XXX. Write more
+experience. Production testing is essential for mass-production, and
+while important work have been done on testing and clockless
+circuits\cite{fullscan}, it is not widely available in all
+design-flows.
+
+As practical work, I will attempt to implement a clockless Advanced
+Encryption Standard (AES)\cite{rijandael} encryption module to explore
+high level clockless design. The is choosen because it is a well
+defined standard, and has a reasonable complexity for this
+project.
+
