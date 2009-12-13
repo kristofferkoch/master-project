@@ -193,21 +193,20 @@ performance as a primary objective, performed \unit{283.75}{\kilo
 
 \subsection{Details for VLSI implementation}
 
+When implementing AES to hardware, there are a lot of choices and
+optimizations that can be applied. I will here outline some aspects of
+implementing AES. More methods for saving power and enhancing
+performance are rigourously surveyed in \cite{ekelund}.
 
-\subsubsection{$SubBytes$ implementations}
-
-Usually, the $SubBytes$ routine and its inverse is implemented with a
+Naivly, the $SubBytes$ routine and its inverse is implemented with a
 table lookup with 256 entries. In hardware, this means some kind of a
 ROM, with an unbreakable latency and the inherent impossibility for
 pipelining. In \cite{csbox} a method is described for decomposing the
 $2^8$ fields into smaller $2^4$ fields for calculating the
 multiplicative inverse combinationally.
 
-
-\subsubsection{Side-band attacks}
-
-The AES algorithm in itself is a secure cipher, that is, no other
-methods other than brute-force attacks exists to deduce a key or
+The AES algorithm in itself is considered a secure cipher, that is, no
+other methods other than brute-force attacks exists to deduce a key or
 plaintext. However, an implementation of AES in software or hardware
 can be subject to side-band attacks. If an attacker has physical
 access to a weak system performing AES, multiple techniques exists for
@@ -228,8 +227,7 @@ fault-injection attacks. It is worth to note that the ROM-based
 implementation of $SubBytes$ that was utilized in this implementation
 showed major leaks of information in the circuit.
 
-
-\subsubsection{Pipelining and mode of operation}
+\subsection{Pipelining and mode of operation}
 
 While it is possible to pipeline the $Round$ procedure by itself, and
 even $SubBytes$ itself when implemented combinationally as in
@@ -270,10 +268,10 @@ one-time-pad cipher \cite{vernam}.
 The only mode of operation considered secure, to my knowledge, that
 benefit from loop unrolling, is the counter (CTR) mode. In this mode,
 similar to the OFB mode, a pseudorandom string is generated simpy by
-encrypting an integer, $i$, corresponding to the current block number, that
-is $c_i \leftarrow m_i \oplus E_k(i)$, and similarily $m_i \leftarrow
-c_i \oplus E_k(i)$. Whithout feedback, the CTR mode allows random
-access during encryption and decryption (for e.g. full disk
+encrypting an integer, $i$, corresponding to the current block number,
+that is $c_i = m_i \oplus E_k(i)$, and similarily $m_i = c_i \oplus
+E_k(i)$, where $\oplus$ is XOR. Whithout feedback, the CTR mode allows
+random access during encryption and decryption (for e.g. full disk
 encryption), and blocks can be processed in paralell.
 
 \subsection{Decryption and other keysizes}
