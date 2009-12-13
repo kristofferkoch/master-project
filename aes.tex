@@ -187,7 +187,12 @@ study \cite{feas} shows that througput up to \unit{500}{\giga \bit
   \label{tab:aes}
 \end{table}
 
+The clockless AES module designed in \cite{claes}, which did not have
+performance as a primary objective, performed \unit{283.75}{\kilo
+  \byte \per \second} on \unit{0.35}{\micro \meter} CMOS.
+
 \subsection{Details for VLSI implementation}
+
 
 \subsubsection{$SubBytes$ implementations}
 
@@ -198,9 +203,31 @@ pipelining. In \cite{csbox} a method is described for decomposing the
 $2^8$ fields into smaller $2^4$ fields for calculating the
 multiplicative inverse combinationally.
 
-\subsubsection{Word width}
 
-\subsubsection{Resource sharing}
+\subsubsection{Side-band attacks}
+
+The AES algorithm in itself is a secure cipher, that is, no other
+methods other than brute-force attacks exists to deduce a key or
+plaintext. However, an implementation of AES in software or hardware
+can be subject to side-band attacks. If an attacker has physical
+access to a weak system performing AES, multiple techniques exists for
+retrieving information about the key.
+
+If not careful implemented, a circuit can exhibit non-constant timing
+when performing, revealing patterns of the data being processed, that
+being the key or plaintext. Implementations can also have weaknesses
+where the power dissipation depends on the data, which lets a careful
+attacker measure and gather data about the key. A third method is to
+inject faults into a system, making it malfunction and reveal secret
+data.
+
+The clockless AES implemented in \cite{claes} was developed to avoid
+these kind of attacks, and concludes that their dual-rail
+implementation hides the secret data from power, timing and
+fault-injection attacks. It is worth to note that the ROM-based
+implementation of $SubBytes$ that was utilized in this implementation
+showed major leaks of information in the circuit.
+
 
 \subsubsection{Pipelining and mode of operation}
 
