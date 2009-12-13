@@ -50,26 +50,23 @@ exception of ``add\_key'', which adds all the 128 bits in one
 chunk. 32 bit was chosen, as this is the size of a column, and
 choosing a smaller datapath would complicate the $MixColumn$
 stage. Results from \cite{ekelund} also showed that processing 32 bits
-at the time is favorable.
+at the time is favorable.  The key schedule calculates a whole new
+128-bit block of key at the time when aes\_data is given the
+mix\_col\_expand instruction.
 
 The ``instruction'' architecture was choosen to ease debugging, and
 hurts the performance, as it delays the execution of $MixColumn$,
 which can be performed on the data returned from the $SubBytes$
 stage. The order of $ShiftRows$ and $SubBytes$ have been reversed, as
-this was most practical in the implementation, and does not hurt
+this was most practical in the implementation, and does not affect
 correctnes.
 
-The $SubBytes$-module was implemented directly from the architecture
-given in \cite{xxxcsbox}.
 
-The resources used in the top level design is:
-\begin{itemize}
-   \item 4 8-bit combinational SubBytes circuits, as as described in
-     \cite{combsbox}, shared between the datapath and the keypath.
-   \item 1 32-bit mixcolumn circuit employing XXX ``doublers''
-   \item 1 128-bit xor-adder circuit
-   \item 1 galois field ``doubler'' for the key schedule.
-\end{itemize}
+The $SubBytes$-module was implemented directly from the architecture
+given in \cite{xxxcsbox}, but without pipelining. The matrix
+multiplication in $MixColumns$ was hand-written to exploit some of the
+parallelity, however not as thorougly as the numerical strength
+reduction employed in \cite[pp. 20-23]{ekelund}.
 
 The design was designed in Balsa, with frequent compilations to
 handshake circuits to visualize what kind of circuit that was

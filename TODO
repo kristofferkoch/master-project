@@ -1,9 +1,8 @@
 conclusion.tex:3:XXX
 discussion.tex:9:contained XXX lines. This also includes the test-bench enclosure,
 discussion.tex:33:programs was quite straighforward. As also noted in \cite{xxx}, Balsa
-implementation.tex:63:given in \cite{xxxcsbox}.
-implementation.tex:69:   \item 1 32-bit mixcolumn circuit employing XXX ``doublers''
-implementation.tex:95:  as of this writing, not publicly available, kindly supplied by XXX
+implementation.tex:66:given in \cite{xxxcsbox}, but without pipelining. The matrix
+implementation.tex:92:  as of this writing, not publicly available, kindly supplied by XXX
 introduction.tex:20:with memory elements interspersed (XXX Figure!). The value of a memory
 theory.tex:92:  \caption{Bundled data XXX}
 theory.tex:200:Hazards are avoided by adding redundant gates XXX
@@ -17,12 +16,12 @@ tools.tex:28:XXX Null convention logic
 tools.tex:49:Handshake circuits, first described in \cite{12, teakxxx}, consists of
 tools.tex:67:There are multiple circuits implemented in Tangram/Haste. XXX list and
 tools.tex:107:\subsection{Testing XXX:remove this}
-tools.tex:140:used in XXX. However, as shown in \cite[pp XXX]{sparso}, this is
-tools.tex:143:language Communicating Sequentaial Processes (CSP)\cite{xxx}, based on
-tools.tex:152:Tangram was used to create multiple circuiots: A XXX microprocessor,
-tools.tex:153:low power smart card XXX, and showed the practical strengths of the
-tools.tex:158:\cite{12,teakxxx}, based on a library of around 40 handshake
-tools.tex:170:University \cite{xxx}, and released to the public domain under a GPLv2
-tools.tex:174:Research have shown that handshake circuits uses little power\cite{xxx},
-tools.tex:175:but also exhibits poor performance\cite{xxx}. Work has been done to
-tools.tex:176:alleviate this\cite{xxx}, but the performance is still rougly half of
+tools.tex:139:%% used in XXX. However, as shown in \cite[pp XXX]{sparso}, this is
+tools.tex:142:%% language Communicating Sequentaial Processes (CSP)\cite{xxx}, based on
+tools.tex:151:%% Tangram was used to create multiple circuiots: A XXX microprocessor,
+tools.tex:152:%% low power smart card XXX, and showed the practical strengths of the
+tools.tex:157:%% \cite{12,teakxxx}, based on a library of around 40 handshake
+tools.tex:169:%% University \cite{xxx}, and released to the public domain under a GPLv2
+tools.tex:173:%% Research have shown that handshake circuits uses little power\cite{xxx},
+tools.tex:174:%% but also exhibits poor performance\cite{xxx}. Work has been done to
+tools.tex:175:%% alleviate this\cite{xxx}, but the performance is still rougly half of
