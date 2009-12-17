@@ -23,4 +23,4 @@ top.pdf: *.tex boker.bib tangtool.pdf handbuffer.pdf c.pdf handshake.pdf \
 figureclean:
 	rm *.pdf
 clean:
-	rm -f top.pdf *.log *~ *.out *.aux *.tox *.blg *.bbl *.toc *.???.bak
+	rm -f top.pdf *.log *~ *.out *.aux *.tox *.blg *.bbl *.toc *.???.bak *.nls
