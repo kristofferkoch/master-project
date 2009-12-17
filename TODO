@@ -1,4 +1,3 @@
-discussion.tex:59:programs was quite straighforward. As also noted in \cite{xxx}, Balsa
 implementation.tex:66:given in \cite{xxxcsbox}, but without pipelining. The matrix
 implementation.tex:92:  as of this writing, not publicly available, kindly supplied by XXX
 introduction.tex:23:with memory elements interspersed (XXX Figure!). The value of a memory
@@ -8,14 +7,3 @@ theory.tex:207:Hazards are avoided by adding redundant gates XXX
 theory.tex:218:\cite{xxx}: Functional testing, and structural testing.
 theory.tex:276:circuit to deadlock, but also lead to a misbehaving circuit. XXX need
 tools.tex:47:Handshake circuits, first described in \cite{12, teakxxx}, consists of
-tools.tex:59:  \caption{XXX. Figure from \cite{tut}.}
-tools.tex:73:There are multiple circuits implemented in Tangram/Haste. XXX list and
-tools.tex:171:%% used in XXX. However, as shown in \cite[pp XXX]{sparso}, this is
-tools.tex:174:%% language Communicating Sequentaial Processes (CSP)\cite{xxx}, based on
-tools.tex:183:%% Tangram was used to create multiple circuiots: A XXX microprocessor,
-tools.tex:184:%% low power smart card XXX, and showed the practical strengths of the
-tools.tex:189:%% \cite{12,teakxxx}, based on a library of around 40 handshake
-tools.tex:201:%% University \cite{xxx}, and released to the public domain under a GPLv2
-tools.tex:205:%% Research have shown that handshake circuits uses little power\cite{xxx},
-tools.tex:206:%% but also exhibits poor performance\cite{xxx}. Work has been done to
-tools.tex:207:%% alleviate this\cite{xxx}, but the performance is still rougly half of

@@ -25,9 +25,11 @@ behaviour.
     C2 & 2609 \\
     C2R & 1093 \\
     C3  & 2130 \\
-    AC2 & 0
+    AC2 & 0 \\
+    \hline
   \end{tabular}
-  \caption{Performance of AES on an Intel Pentium 4 2.8 GHz CPU.}
+  \caption{Resource usage in terms of gates listed in
+    figure~\ref{fig:teaklib} on page~\pageref{fig:teaklib}}
   \label{tab:res}
 \end{table}
 
@@ -56,13 +58,15 @@ It is also interesting how much effort that went into producing a
 working AES module. I did not keep track of how many hours that went
 into learning the Balsa language, or to write the AES, but after
 understanding the basic handshake mechanisms, writing working Balsa
-programs was quite straighforward. As also noted in \cite{xxx}, Balsa
-allows specifications to be expressed in way that is similar to
-programmers accustomed to imperative programming languages, such as
-C. While Balsa-specifications are not guaranteed to be efficiently
-implemented, the visul simulator allows the designer to gain a better
-understanding of how the design performs, find bottlenecks and to
-optimize when required.
+programs was quite straighforward. CSP languages, as noted in
+\cite{taylor}, allows specifications to be expressed in way that is
+similar to programmers accustomed to imperative programming languages,
+such as C, lowering the threshold for doing hardware design, ``even
+for novices''. While specifications written in CSP style languages
+such as Balsa and Tangram are not guaranteed to be efficiently
+implemented, tools such as visual simulators allows the designer to
+gain a better understanding of how the design performs, find
+bottlenecks and to optimize the sourcecode when required.
 
 While low area and high performance are often cited goals for a
 digital circuit specification, the time consumed by engineers to
