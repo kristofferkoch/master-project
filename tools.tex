@@ -64,12 +64,12 @@ written.
 There are multiple circuits implemented in Tangram/Haste. XXX list and
 explain different circuits.
 
-Balsa is another CSP-like language based on the priciples from Tangram,
-and is an attempt to define a more expressive language. Balsa also
-introduces a intermediate file format, breeze, which contains the
-netlist for the handshake components. Breeze can later be implemented
-into standard-cell logic by. Figure~\ref{fig:balsatool} shows Balsa
-and it's related tools.
+Balsa\cite{tut} is another CSP-like language based on the priciples
+from Tangram, and is an attempt to define a more expressive
+language. Balsa also introduces a intermediate file format, breeze,
+which contains the netlist for the handshake components. Breeze can
+later be implemented into standard-cell logic
+by. Figure~\ref{fig:balsatool} shows Balsa and it's related tools.
 
 Tangram and Balsa are referred to as being a ``syntax-directed''
 languages. This means that the silicon compiler transparently and
@@ -105,7 +105,9 @@ begin
   end
 end
 \end{lstlisting}
-\caption{A Balsa-module implementing a modulo-16 counter, demonstrating how initialization is performed on line 3.}
+\caption{A Balsa-module implementing a modulo-16 counter,
+  demonstrating how initialization is performed on line 3. Code from
+  \cite{tut}.}
 \label{fig:init}
 \end{figure}
 

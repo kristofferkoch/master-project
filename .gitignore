@@ -9,3 +9,9 @@
 \#*\#
 *.bak
 *.lof
+naive-AES-balsa
+*.gls
+*.ilg
+*.ind
+*.nlo
+*.nls
