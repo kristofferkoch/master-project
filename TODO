@@ -8,15 +8,15 @@ theory.tex:154:single-rail \cite{xxx}.
 theory.tex:207:Hazards are avoided by adding redundant gates XXX
 theory.tex:218:\cite{xxx}: Functional testing, and structural testing.
 theory.tex:276:circuit to deadlock, but also lead to a misbehaving circuit. XXX need
-tools.tex:25:  \caption{Tangram design flow. Figure from \cite{fullscan}. XXX compare to TiDE}
 tools.tex:47:Handshake circuits, first described in \cite{12, teakxxx}, consists of
-tools.tex:64:There are multiple circuits implemented in Tangram/Haste. XXX list and
-tools.tex:162:%% used in XXX. However, as shown in \cite[pp XXX]{sparso}, this is
-tools.tex:165:%% language Communicating Sequentaial Processes (CSP)\cite{xxx}, based on
-tools.tex:174:%% Tangram was used to create multiple circuiots: A XXX microprocessor,
-tools.tex:175:%% low power smart card XXX, and showed the practical strengths of the
-tools.tex:180:%% \cite{12,teakxxx}, based on a library of around 40 handshake
-tools.tex:192:%% University \cite{xxx}, and released to the public domain under a GPLv2
-tools.tex:196:%% Research have shown that handshake circuits uses little power\cite{xxx},
-tools.tex:197:%% but also exhibits poor performance\cite{xxx}. Work has been done to
-tools.tex:198:%% alleviate this\cite{xxx}, but the performance is still rougly half of
+tools.tex:59:  \caption{XXX. Figure from \cite{tut}.}
+tools.tex:73:There are multiple circuits implemented in Tangram/Haste. XXX list and
+tools.tex:171:%% used in XXX. However, as shown in \cite[pp XXX]{sparso}, this is
+tools.tex:174:%% language Communicating Sequentaial Processes (CSP)\cite{xxx}, based on
+tools.tex:183:%% Tangram was used to create multiple circuiots: A XXX microprocessor,
+tools.tex:184:%% low power smart card XXX, and showed the practical strengths of the
+tools.tex:189:%% \cite{12,teakxxx}, based on a library of around 40 handshake
+tools.tex:201:%% University \cite{xxx}, and released to the public domain under a GPLv2
+tools.tex:205:%% Research have shown that handshake circuits uses little power\cite{xxx},
+tools.tex:206:%% but also exhibits poor performance\cite{xxx}. Work has been done to
+tools.tex:207:%% alleviate this\cite{xxx}, but the performance is still rougly half of
