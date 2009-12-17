@@ -91,19 +91,20 @@ shown to have significant impact on power.
 \begin{figure}[htbp]
   \centering
   \includegraphics{bundled.pdf}
-  \caption{Bundled data XXX}
+  \caption{An abstract view of a channel with bundled data, and two
+    different protocols for data validity. Figure from \cite{sparso}.}
   \label{fig:bundled}
 \end{figure}
 
 When using bundled data, values are represented by conventional
 boolean levels, and the handshaking is implemented by bundling request
 and acknowledge signals with data as shown in
-figure~\ref{fig:bundled}~a). Bundled data is also refered to as
-single rail, in contrast to e.g. dual rail encoding, as data is
-encoded as ordinary binary data. Usually there is no way to determine
-wether binary data from a combinatonal function is complete, delays
-matching the combinational delay in the critical path have to be
-inserted in the control path to maintain correct behaviour as shown in
+figure~\ref{fig:bundled}~a). Bundled data is also refered to as single
+rail, in contrast to e.g. dual rail encoding, as data is encoded as
+ordinary binary data. Usually there is no way to determine wether
+binary data from a combinatonal function is complete, delays matching
+the combinational delay in the critical path have to be inserted in
+the control path to maintain correct behaviour as shown in
 figure~\ref{fig:bundeled_delay}.
 
 \begin{table}
@@ -151,7 +152,7 @@ implementation shown in figure~\ref{fig:drgate} is state-holding, and
 holds a calculated value until all (both) inputs returns to NULL, not
 all gates need to have such complicated implementations. Usually, the
 double area is needed to implement a dual-rail circuit over that of
-single-rail \cite{xxx}.
+single-rail.
 
 A more generalized method for encoding, is N of M encodings, where
 dual rail is 1 of 2 encoding. All these encodings are constant-weight
@@ -181,8 +182,8 @@ channel.
 \begin{figure}[htbp]
   \centering
   \includegraphics{compdet.pdf}
-  \caption{A memory element with completion detection. Figure from
-    \cite[pp. 21]{sparso}.}
+  \caption{A memory element for dual-rail implementations with
+    completion detection. Figure from \cite[pp. 21]{sparso}.}
   \label{fig:compdet}
 \end{figure}
 

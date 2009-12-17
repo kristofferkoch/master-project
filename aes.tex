@@ -225,7 +225,11 @@ these kind of attacks, and concludes that their dual-rail
 implementation hides the secret data from power, timing and
 fault-injection attacks. It is worth to note that the ROM-based
 implementation of $SubBytes$ that was utilized in this implementation
-showed major leaks of information in the circuit.
+showed major leaks of information in the circuit. Side-band
+information is leaked as a consequence of different hamming-weights
+are giving different power signatures, and this problem is alleviated
+in \cite{claes} by employing dual-rail encoding, ensuring constant
+hamming-weight at the electrical level for all data.
 
 \subsection{Pipelining and mode of operation}
 
