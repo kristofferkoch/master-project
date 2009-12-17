@@ -18,16 +18,24 @@ circuits grow in size and complexity, it is ``well known''
 simultaneously to all flip-flops in the circuit becomes an
 increasingly difficult task.
 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics{flow.pdf}
+  \caption{An abstract view of a digital circuit with registers and
+    combinational logic (CL). Figure from \cite{sparso}.}
+  \label{fig:flow}
+\end{figure}
+
 When designing a digital circuit for solving a computable problem, it
 is usual to split the problem into multiple combinational circuits
-with memory elements interspersed (XXX Figure!). The value of a memory
-element is then determined by the value of the previous memory element
-modified by a combinational circuit. However, this combinational
-circuit has a non-zero delay, and there is usually no reliable way to
-determine when the output value has been completely calculated. With
-clocked circuits, the completeness of a calculation is guaranteed by
-assuming worst case conditions and setting the clock-frequency
-accordingly.
+with memory elements interspersed as shown in
+figure~\ref{fig:flow}. The value of a memory element is then
+determined by the value of the previous memory element modified by a
+combinational circuit. However, this combinational circuit has a
+non-zero delay, and there is usually no reliable way to determine when
+the output value has been completely calculated. With clocked
+circuits, the completeness of a calculation is guaranteed by assuming
+worst case conditions and setting the clock-frequency accordingly.
 
 As digital circuits have grown, designing have increasingly become
 problem of managing complexity \cite{flynn2009deep}. To make
