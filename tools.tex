@@ -11,7 +11,8 @@ the languages that prevents this as demonstrated in
 \cite[pp. 135-137]{sparso}.
 
 Much of the work on high-level modeling and synthesis of clockless
-circuits is based on the CSP language paradigm. The CSP language,
+circuits is based on the CSP\nomenclature{CSP}{Communicationg
+  Sequential Process} language paradigm. The CSP language,
 ``Communicating Sequential Process'' was proposed by Hoare \cite{csp},
 and is based on the mathematical theories of concurrency from process
 algebra. CSP-languages allows concurrent processes, composition of
@@ -24,9 +25,6 @@ synchronous message passing between the processes.
   \caption{Tangram design flow. Figure from \cite{fullscan}. XXX compare to TiDE}
   \label{fig:tangtool}
 \end{figure}
-
-XXX Null convention logic
-
 
 Tangram is a high-level language in the CSP family, introduced by
 Philips in 1991 to define clockless circuits. The Tangram compiler
@@ -63,7 +61,6 @@ is deterministically mapped to a handshake-component. This allows the
 designer to better understand and optimize circuits as they are
 written.
 
-
 There are multiple circuits implemented in Tangram/Haste. XXX list and
 explain different circuits.
 
@@ -87,6 +84,32 @@ DMA-controller for the Amulet3a processor, and the ARM-compatible SPA
 processor itself. Balsa is released to the public domain under the
 GPLv2 licence.
 
+\label{par:init}
+Initialization of variables in Balsa must be done explicit at
+start-up, the same way as variables in ordinary programming
+languages. The initialization is not performed with a global signal,
+but is done locally at sub-modules, as the sub-modules are activated
+by handshakes. Figure~\ref{fig:init} illustrates how initialization
+can be defined at the source-code level.
+
+\begin{figure}[htbp]
+\begin{lstlisting}
+procedure count16 (sync aclk; output count : nibble) is
+variable count_reg : nibble
+begin
+  count_reg := 0;
+  loop
+    sync aclk ;
+    count <- count_reg ;
+    count_reg := (count_reg + 1 as nibble)
+  end
+end
+\end{lstlisting}
+\caption{A Balsa-module implementing a modulo-16 counter, demonstrating how initialization is performed on line 3.}
+\label{fig:init}
+\end{figure}
+
+
 Handshake component based designs has been shown to use little power,
 but also to have low performance \cite{80c51}. Handshake-circuits
 exhibit a control heavy structure which inhibits performace. Teak
@@ -103,8 +126,6 @@ Teak circuits have been demonstrated to exhibit 4.6\% to 18.39\% worse
 performance than Balsa-circuits when syntehsizing to a fixed gate
 delay dual-rail four-phase implementation. However, Teak has a larger
 headroom for automated optimising transformations.
-
-\subsection{Testing XXX:remove this}
 
 
 Clockless circuits usually uses latches and C-elements for

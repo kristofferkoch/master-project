@@ -7,6 +7,7 @@ TODO: *.tex
 top.pdf: *.tex boker.bib tangtool.pdf handbuffer.pdf c.pdf handshake.pdf \
 	bundled.pdf compdet.pdf aesctrl.pdf teaklib.pdf fork.pdf drgate.pdf
 	pdflatex top
+	makeindex top.nlo -s nomencl.ist -o top.nls
 	bibtex top
 	pdflatex top
 	pdflatex top
