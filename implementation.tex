@@ -63,9 +63,9 @@ correctnes.
 
 
 The $SubBytes$-module was implemented directly from the architecture
-given in \cite{xxxcsbox}, but without pipelining. The matrix
+given in \cite{csbox}, but without pipelining. The matrix
 multiplication in $MixColumns$ was hand-written to exploit some of the
-parallelity, however not as thorougly as the numerical strength
+parallelism, however not as thorougly as the numerical strength
 reduction employed in \cite[pp. 20-23]{ekelund}.
 
 The design was designed in Balsa, with frequent compilations to
@@ -89,11 +89,11 @@ verified using the NIST ECB testing vectors \cite{nisttest}.
 While it should be able to implement the breeze handshake circuits to
 functionally equivalent netlists for mapping to hardware, I was not
 able to do this with the latest version of Balsa\footnote{Balsa 4.0,
-  as of this writing, not publicly available, kindly supplied by XXX
-  at Manchester University.}, due to missing library files and
-documentation. For implementation, I concentrated on using Teak
-\cite{teak}, producing netlists consisting of constant delay gates as
-shown in figure~\ref{fig:teaklib}.
+  as of this writing, not publicly available, kindly supplied by
+  Lilian Janin at Manchester University.}, due to missing library
+files and documentation. For implementation, I concentrated on using
+Teak \cite{teak}, producing netlists consisting of constant delay
+gates as shown in figure~\ref{fig:teaklib}.
 
 In addition to the behavrioal simulation, the Verilog netlist
 generated from Teak was verified using the GPL version of the verilog

@@ -3,30 +3,41 @@
 In this project, I will investigate options for synthesizing digital
 circuits without clocks. A prerequisite for such a solution is a
 high-level language that ultimately can create circuits for
-implementation in silicon. I will also implement an encryption circuit
-for the AES-standard with one of these technologies, and attempt to
-identify challenges and potential with such a solution.
+implementation in silicon. I will also implement a circuit for the
+\nomenclature{AES}{Advanced Encryption Standard} Advanced Encryption
+Standard with one of these technologies, and attempt to identify
+challenges and potential with such a solution.
 
-One major assumption in the majority of digital VLSI circuits produced
-today, is the notion of a discrete and common time. This is provided
-by one or more clocks. This is an important simplification that makes
-reasoning about digital circuits easier. However, as circuits grow in
-size and complexity, it is ``well known'' \cite[pp. 5]{sparso} that
-the task of providing a clock-signal simultaneously to all flip-flops
-in the circuit becomes an increasingly difficult task.
+One major assumption in the majority of digital
+\nomenclature{VLSI}{Very-Large-Scale Integration} VLSI circuits
+produced today, is the notion of a discrete and common time. This is
+provided by one or more clocks. This is an important simplification
+that makes reasoning about digital circuits easier. However, as
+circuits grow in size and complexity, it is ``well known''
+\cite[pp. 5]{sparso} that the task of providing a clock-signal
+simultaneously to all flip-flops in the circuit becomes an
+increasingly difficult task.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics{flow.pdf}
+  \caption{An abstract view of a digital circuit with registers and
+    combinational logic (CL). Figure from \cite{sparso}.}
+  \label{fig:flow}
+\end{figure}
 
 When designing a digital circuit for solving a computable problem, it
 is usual to split the problem into multiple combinational circuits
-with memory elements interspersed (XXX Figure!). The value of a memory
-element is then determined by the value of the previous memory element
-modified by a combinational circuit. However, this combinational
-circuit has a non-zero delay, and there is usually no reliable way to
-determine when the output value has been completely calculated. With
-clocked circuits, the completeness of a calculation is guaranteed by
-assuming worst case conditions and setting the clock-frequency
-accordingly.
+with memory elements interspersed as shown in
+figure~\ref{fig:flow}. The value of a memory element is then
+determined by the value of the previous memory element modified by a
+combinational circuit. However, this combinational circuit has a
+non-zero delay, and there is usually no reliable way to determine when
+the output value has been completely calculated. With clocked
+circuits, the completeness of a calculation is guaranteed by assuming
+worst case conditions and setting the clock-frequency accordingly.
 
-As digital circuits have grown, designing has increasingly become
+As digital circuits have grown, designing have increasingly become
 problem of managing complexity \cite{flynn2009deep}. To make
 specifications with varying levels of abstractions in hardware
 description languages, such as VHDL and Verilog, is crucial for
@@ -36,7 +47,8 @@ The motivation for investigating clockless is that the clock, while
 conceptually simple, imposes increased complexity when the circuits
 grow; the clock can ultimately end up complicating the design instead
 of simplifying it. Clockless circuits also have different and
-interesting characteristics: \begin{itemize}
+interesting characteristics: 
+\begin{itemize}
 
 \item The clock in a conventional design is one of the main
   contributors to power-consumption \cite{tiwari1998reducing}.
@@ -76,5 +88,7 @@ As practical work, I will attempt to implement a clockless Advanced
 Encryption Standard (AES)\cite{rijandael} encryption module to explore
 high level clockless design. The is choosen because it is a well
 defined standard, and has a reasonable complexity for this
-project.
+project. While previous work on clockless AES\cite{claes} have focused
+on security, I will in this project mainly explore the AES to survey
+clockless high-level design.
 

@@ -1,0 +1,40 @@
+\section*{Description of Assignment}
+
+Challenging the frontiers of ultra low-energy design requires
+innovative low-energy contributions from all levels and aspects of the
+design and toolflow. Software architecture, digital system-level
+architecture, low-level digital design choices, backend techniques
+such as clock gating strategies, toggle information feedback and
+operand isolation, process technology and place-and-route techniques
+are all critical factors in the total digital world energy consumption
+budget.
+
+Some fundamental paradigms of main-stream digital design flows have
+not changed for decades, such as the presence of a clock. Research
+into self-timed techniques (we are avoiding the term ‘asynchronous’
+here because an asynchronous design often refers to a design with
+multiple asynchronous clocks) has progressed steadily over the last
+two decades. Self-timed design promises major improvements in energy
+consumption and noise emission compared to traditional clocked
+synchronous designs.
+
+A major hurdle that had to be solved to enable large scale
+commercialized of such circuits was testability. Until recently,
+self-timed digital circuits were not scanable, and therefore
+traditional production testing and low-cost mass production was not
+possible.
+
+A range of different approaches have been developed for the design and
+synthesis of self-timed circuits. The Netherlands based company
+Handshake Solutions (www.handshakesolutions.com) is one example of a
+tool and IP provider for self-timed circuit design.
+
+The focus of this thesis is to conduct a pre-study into the viability
+of using self-timed design techniques for low-cost ultra-low energy
+designs such as the EFM32 microcontroller family. Such techniques will
+not be applicable for the entire digital part of a MCU, but for
+certain peripheral and core modules. In this thesis, a study into
+converting a synchronous Advanced Encryption Standard (AES) peripheral
+module into a self-timed and scanable peripheral module is the primary
+objective. Various self-timed techniques should be explored and
+compared to a traditional synchronous design.

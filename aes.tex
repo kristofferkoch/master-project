@@ -225,15 +225,19 @@ these kind of attacks, and concludes that their dual-rail
 implementation hides the secret data from power, timing and
 fault-injection attacks. It is worth to note that the ROM-based
 implementation of $SubBytes$ that was utilized in this implementation
-showed major leaks of information in the circuit.
+showed major leaks of information in the circuit. Side-band
+information is leaked as a consequence of different hamming-weights
+are giving different power signatures, and this problem is alleviated
+in \cite{claes} by employing dual-rail encoding, ensuring constant
+hamming-weight at the electrical level for all data.
 
 \subsection{Pipelining and mode of operation}
 
 While it is possible to pipeline the $Round$ procedure by itself, and
 even $SubBytes$ itself when implemented combinationally as in
 \cite{csbox}, it can also be beneficial to unroll multiple $Round$s in
-series as shown in figure~\ref{fig:unroll}. I will here describe 3
-modes of operation to illustrate when unrolling can be beneficial.
+series. I will here describe 3 modes of operation to illustrate when
+unrolling can be beneficial.
 
 \begin{figure}[htbb]
   \subfigure{\label{fig:ecbpicta}}
@@ -243,7 +247,8 @@ modes of operation to illustrate when unrolling can be beneficial.
   \subfigure{\label{fig:ecbpictc}}
   \includegraphics[width=0.3\textwidth]{noise.png}
   \caption{a) A picture encrypted in b) ECB-mode and in c) other
-    modes, causing an unrevealing pseudo random pattern. Figure from \cite{pingu}.}
+    modes, causing an unrevealing pseudo random pattern. Figure from
+    \cite{pingu}.}
   \label{fig:ecbpict}
 \end{figure}
 
@@ -257,21 +262,30 @@ same output given the same input (key and data), it allows an attacker
 to guess the ciphertext by trial-and-error. Figure~\ref{fig:ecbpict}
 illustrates how ECB reveals data-patterns from the plaintext.
 
-The output feedback (OFB) mode of operation, described in
-figure~\ref{fig:ofb}, while not suffering from the same weakness as
-the ECB mode, does not benefit from unrolling, as the preceeding
-ciphertext is needed to encrypt the current plaintext. The OFB mode
-generates a pseudo random (but unguessable, not given the key) string
-that is XORed with the plaintext to encrypt, similar to the Vernam
-one-time-pad cipher \cite{vernam}.
+
+\begin{figure}[htbb]
+  \includegraphics{ofb.png}
+  \caption{Output feedback (OFB) mode encryption. Figure from \cite{pingu}.}
+  \label{fig:ofb}
+\end{figure}
+
+The output feedback (OFB\nomenclature{OFB}{Output Feedback}) mode of
+operation, described in figure~\ref{fig:ofb}, while not suffering from
+the same weakness as the ECB\nomenclature{ECB}{Electronic Code Book}
+mode, does not benefit from unrolling, as the preceeding ciphertext is
+needed to encrypt the current plaintext. The OFB mode generates a
+pseudo random (but unguessable, not given the key) string that is
+XORed\nomenclature{XOR}{Exclusive OR} with the plaintext to encrypt,
+similar to the Vernam one-time-pad cipher \cite{vernam}.
 
 The only mode of operation considered secure, to my knowledge, that
-benefit from loop unrolling, is the counter (CTR) mode. In this mode,
-similar to the OFB mode, a pseudorandom string is generated simpy by
-encrypting an integer, $i$, corresponding to the current block number,
-that is $c_i = m_i \oplus E_k(i)$, and similarily $m_i = c_i \oplus
-E_k(i)$, where $\oplus$ is XOR. Whithout feedback, the CTR mode allows
-random access during encryption and decryption (for e.g. full disk
+benefit from loop unrolling, is the counter
+(CTR)\nomenclature{CTR}{Counter} mode. In this mode, similar to the
+OFB mode, a pseudorandom string is generated simpy by encrypting an
+integer, $i$, corresponding to the current block number, that is $c_i
+= m_i \oplus E_k(i)$, and similarily $m_i = c_i \oplus E_k(i)$, where
+$\oplus$ denotes XOR. Whithout feedback, the CTR mode allows random
+access during encryption and decryption (for e.g. full disk
 encryption), and blocks can be processed in paralell.
 
 \subsection{Decryption and other keysizes}
