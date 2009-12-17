@@ -1,7 +1,15 @@
 \section{Sourcecode}
 
+All listed sourcecode is also available at
+http://github.com/kristofferkoch/naive-AES-balsa.
 
 \subsection{Test fixture, test-simple.balsa}
+
+The input is automatically inserted by a script to test series of
+vectors. First 4 32-bit words are key, last words are plaintext. All
+data are most significant data first, that is leftmost state-column
+first.
+
 \lstinputlisting{naive-AES-balsa/test-simple.balsa}
 
 \subsection{aes.balsa}
