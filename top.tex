@@ -45,13 +45,13 @@ escapeinside={\%*}{*)}          % if you want to add a comment within your code
 % Set the beginning of a LaTeX document
 \begin{document}
 
-\title{Clockless AES circuit XXX: nice front page}
+\title{Clockless AES circuit}
 \author{Kristoffer Ellersgaard Koch}
 
 \date{Fall 2009}
 \pagenumbering{roman} % i, ii, iii, iv...
 \pagestyle{empty}
-\maketitle
+\input{front}
 \thispagestyle{empty}
 
 \cleardoublepage
@@ -65,8 +65,8 @@ escapeinside={\%*}{*)}          % if you want to add a comment within your code
 \newpage
 
 \tableofcontents
-\listoffigures
-
+%\listoffigures
+\clearpage
 \printnomenclature
 \newpage
 \setcounter{page}{1}
