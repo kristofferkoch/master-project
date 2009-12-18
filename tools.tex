@@ -2,10 +2,10 @@
 \label{sec:tools}
 
 To design complex digital circuits, tools for reduction and management
-of complexity is needed. Usually, the designer expres the behaviour of
-circuits in a hardware description language (HDL), which provides an
-abstraction over the underlying hardware. While ordinary design tools
-and languages, such as VHDL and Verilog, are not usually used to
+of complexity is needed. Usually, the designer express the behaviour
+of circuits in a hardware description language (HDL), which provides
+an abstraction over the underlying hardware. While ordinary design
+tools and languages, such as VHDL and Verilog, are not usually used to
 synthesize clockless circuits, there is not an inherent limitation in
 the languages that prevents this as demonstrated in
 \cite[pp. 135-137]{sparso}.
@@ -33,7 +33,7 @@ toolset and workflow as illustrated in
 Figure~\ref{fig:tangtool}. Tangram was later transferred from Philips
 to the company Handshake Solutions, and the name of Tangram was
 changed to Haste. As of this writing, Haste has entered a state of
-maintenance, and has been readsorbed into Philips.
+maintenance, and has been reabsorbed into Philips.
 
 \begin{figure}[htbp]
   \centering
@@ -79,7 +79,7 @@ which contains the netlist for the handshake components. As shown in
 figure~\ref{fig:balsaflow} Breeze handshake circuit files can later be
 implemented into standard-cell logic by.
 
-Tangram and Balsa are referred to as being a ``syntax-directed''
+Tangram and Balsa are referred to as being ``syntax-directed''
 languages. This means that the silicon compiler transparently and
 predictably generates components from each language construct. In
 Figure~\ref{fig:handbuffer} it is shown how a simple Balsa-program is
@@ -125,7 +125,8 @@ but also to have low performance \cite{80c51}. Handshake-circuits
 exhibit a control heavy structure which inhibits performace. Teak
 \cite{teak} introduces a new target component set and synthesis scheme
 for synthesizing Balsa circuits as an attempt to mitigate this
-drawback. Instead of focusing on control
+drawback. Instead of generating large control structure, Teak attempts
+to embed control into the data-flow.
 
 While Balsa-circuits consists of capacity-less channels, where data on
 the channel has to be valid from request to acknowledge, Teak allows
@@ -138,14 +139,13 @@ delay dual-rail four-phase implementation. However, Teak has a larger
 headroom for automated optimising transformations.
 
 
-Clockless circuits usually uses latches and C-elements for
+Clockless circuits usually use latches and C-elements for
 memory. These memory-elements are not directly scanable, and they are
 not connected to any global clock. However, in \cite{fullscan}, it is
 shown how Tangram compiled, clockless circuits can be made scanable by
 replacing all state-holding handshake components with scanable
-equivalents. In Figure~\ref{scanC}, from \cite{fullscan}, a scanable
-C-element is shown. These components are then connected into a serial
-scan chain which is compatible with existing ATPG tools.
+equivalents. These components are then connected into a serial scan
+chain which is compatible with existing ATPG tools.
 
 It is important to note that the scan-chain insertion is done at the
 technology-mapping stage, allowing the designer to insert test-logic
@@ -155,6 +155,6 @@ together into a scan chain, and to provide a global testing clock.
 
 As the testing is done synchronously, it also means that a global
 clock have to be implemented. However, this clock has more relaxed
-requirements than that of an clocked circuit, since the clock used for
+requirements than that of a clocked circuit, since the clock used for
 testing runs at lower speeds than the circuit itself is capable of.
 
