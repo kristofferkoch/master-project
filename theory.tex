@@ -205,7 +205,6 @@ successive values on the channel. Care must therefore not only be
 taken to avoid hazards on NULL-to-value transitions, but also on the
 return-to-NULL transitions.
 
-Hazards are avoided by adding redundant gates XXX
 
 \subsection{Testing}
 
@@ -216,7 +215,7 @@ can render ICs unusable or limit lifetime.
 
 To determine which chips that are OK and not, testing must be
 performed. Testing methods was divided into two categories by
-\cite{xxx}: Functional testing, and structural testing.
+\cite{eldred}: Functional testing, and structural testing.
 
 In functional testing, the circuit is tested in its normal operation
 mode, and no modifications to the circuit is needed. However, without
@@ -282,10 +281,10 @@ referred to as the ``acknowledge property'', and it is noted that this
 only holds for the practical unusefull class of delay-insensitive
 circuits. In the more appliciable quasi delay insensitive kind of
 circuits, isochronic forks can extend faults to not only cause a
-circuit to deadlock, but also lead to a misbehaving circuit. XXX need
-figure and cite.  Furthermore, \cite{fullscan} provides methods for
-implementing a synchronous scan-interface to clockless circuits are
-introduced and tested.
+circuit to deadlock, but also lead to a misbehaving circuit.
+Furthermore, \cite{fullscan} provides methods for implementing a
+synchronous scan-interface to clockless circuits are introduced and
+tested.
 
 \subsection{Initialization and reset}
 
