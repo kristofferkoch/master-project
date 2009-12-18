@@ -58,7 +58,7 @@ It is also interesting how much effort that went into producing a
 working AES module. I did not keep track of how many hours that went
 into learning the Balsa language, or to write the AES, but after
 understanding the basic handshake mechanisms, writing working Balsa
-programs was quite straighforward. CSP languages, as noted in
+programs was quite straightforward. CSP languages, as noted in
 \cite{taylor}, allows specifications to be expressed in way that is
 similar to programmers accustomed to imperative programming languages,
 such as C, lowering the threshold for doing hardware design, ``even
@@ -66,7 +66,7 @@ for novices''. While specifications written in CSP style languages
 such as Balsa and Tangram are not guaranteed to be efficiently
 implemented, tools such as visual simulators allows the designer to
 gain a better understanding of how the design performs, find
-bottlenecks and to optimize the sourcecode when required.
+bottlenecks and to optimize the source code when required.
 
 While low area and high performance are often cited goals for a
 digital circuit specification, the time consumed by engineers to
@@ -81,7 +81,12 @@ work around. The most important problem was a compiler bug in Balsa
 3.5.1, which prevented compilation of my AES module. I was later
 supplied with the newest Balsa 4.0 which was able to generate
 handshake circuits in the Breeze-format, but not able to further
-generate netlists. While this illustrates that the choosen tools are
+generate netlists. While this illustrates that the chosen tools are
 currently a bit immature, they are under development, and are expected
 to improve.
 
+%% In the epilogue of \cite{sparso}, it is pointed in the direction of
+%% GALS\nomenclature{GALS}{Globally Asynchronous Locally Synchronous},
+%% Globally Asynchronous Locally Synchronous, where synchrous blocks
+%% running at their own clock frequency are connected with clocless
+%% interconnects. 
