@@ -47,7 +47,7 @@ useful circuits: The isochronic fork.
 \end{figure}
 
 An isochronic fork is a timing assumption that requires a signal to be
-delivered simultainiously to two circuit elements on a fanout such as
+delivered simultaneously to two circuit elements on a fanout such as
 in figure~\ref{fig:fork}. This requirement requires attention in
 implementation at the transistor level, but is not to hard to
 fulfill. The isochronic fork allows the sender of a signal to assume
@@ -67,12 +67,12 @@ has a possible QDI implementation.
 \end{figure}
 
 To connect and synchronize blocks in a clockless circuits, a form of
-handshaking is usually employed, often as as a request-acknowledge
+handshaking is usually employed, often as a request-acknowledge
 protocol shown in figure~\ref{fig:handshake}. The handshaking provides
 a local clock for the storage elements, usually latches or C-elements.
 
 There are multiple ways to implement handshaking. Some high level
-synthesis tools, introduced in section~\ref{sec:tools}, allows the
+synthesis tools, introduced in section~\ref{sec:tools}, allow the
 designer to choose and evaluate multiple implementation styles. The
 Tangram/Haste synthesis tool allows handshake circuits to be
 implemented as clocked circuits, making verification on regular FPGAs
@@ -81,7 +81,7 @@ implemented as clocked circuits, making verification on regular FPGAs
 \subsection{Encodings}
 
 Clocked digital circuits often use regular binary encoding where one
-wire corresponds to one bit, a high voltage corresponds to a 1 and a
+wire corresponds to one bit; a high voltage corresponds to a 1 and a
 low voltage to a 0. While this encoding is possible with clockless
 circuits, it has the drawback of not indicating completion. Other
 encodings, discussed below, can also provide completion detection, an
@@ -99,13 +99,12 @@ shown to have significant impact on power.
 When using bundled data, values are represented by conventional
 boolean levels, and the handshaking is implemented by bundling request
 and acknowledge signals with data as shown in
-figure~\ref{fig:bundled}~a). Bundled data is also refered to as single
-rail, in contrast to e.g. dual rail encoding, as data is encoded as
-ordinary binary data. Usually there is no way to determine wether
-binary data from a combinatonal function is complete, delays matching
-the combinational delay in the critical path have to be inserted in
-the control path to maintain correct behaviour as shown in
-figure~\ref{fig:bundeled_delay}.
+figure~\ref{fig:bundled}~a). Bundled data is also referred to as
+single rail, in contrast to e.g. dual rail encoding, as data is
+encoded as ordinary binary data. Usually there is no way to determine
+whether binary data from a combinational function is complete, delays
+matching the combinational delay in the critical path have to be
+inserted in the control path to maintain correct behaviour.
 
 \begin{table}
   \centering
@@ -136,7 +135,7 @@ table~\ref{tab:dr}.
   \caption{a) A dual rail inverter. b) A strongly indicating dual rail
     and-gate, and c) the simulated and-gate. Note that the output is
     not showing a value until both inputs does, and that the value is
-    held until \emph{both} imputs are returned to ``NULL''.}
+    held until \emph{both} inputs are returned to ``NULL''.}
   \label{fig:drgate}
 \end{figure}
 
@@ -154,9 +153,9 @@ all gates need to have such complicated implementations. Usually, the
 double area is needed to implement a dual-rail circuit over that of
 single-rail.
 
-A more generalized method for encoding, is N of M encodings, where
-dual rail is 1 of 2 encoding. All these encodings are constant-weight
-(N) encodings, meaning that a complete signal has a certain hamming
+A more generalized method for encoding is N of M encodings, where dual
+rail is 1 of 2 encoding. All these encodings are constant-weight (N)
+encodings, meaning that a complete signal has a certain hamming
 weight, that is the count of electrical ones on a complete signal. In
 \cite[chapter 9]{nullconv}, multiple of these encodings are surveyed
 with regards to required resources (i.e. area) for wires and logic,
@@ -218,14 +217,14 @@ performed. Testing methods was divided into two categories by
 \cite{eldred}: Functional testing, and structural testing.
 
 In functional testing, the circuit is tested in its normal operation
-mode, and no modifications to the circuit is needed. However, without
+mode, and no modifications to the circuit are needed. However, without
 good knowledge of the underlying logic of a circuit under test, only
 exhaustive testing can guarantee that the circuit will function for
 all possible inputs. For e.g. a 32-bit adder, this means that $2^{64}
 \approx 10^{19}$ vectors must be tested, which will, at an
 unreasonable high test frequency of \unit{1}{\giga \hertz}, take
-approximatly \unit{10^{10}}{\second}, or 317 years to perform, leaving
-functional testing unreasonable for this circuit.
+approximately \unit{10^{10}}{\second}, or 317 years to perform,
+leaving functional testing unreasonable for this circuit.
 
 Another form for functional testing, built in self test
 (BIST\nomenclature{BIST}{Built-In Self Test}), utilizes e.g. an on
@@ -235,7 +234,7 @@ chip, as this test runs ``at speed''. An example of BIST is the
 testing of RAM by writing and verifying all bits accessible. BIST is
 possible to implement both on clocked and clockless circuits.
 
-Whith structural testing, a \emph{fault model} is choosen to give a
+With structural testing, a \emph{fault model} is choosen to give a
 simplified, but reasonable model of defects that can occur. Based on
 the fault mode, test patterns are generated to cover the maximum
 number of faults, that is inputs that will yield a wrong output in the
@@ -243,18 +242,18 @@ presence of a fault.
 
 To design-for-test (DfT\nomenclature{DfT}{Design-for-Test}) is to
 design hardware with modifications to make it more testable. More
-complicated circuits thant the mentioned 32 bit adder where inputs can
+complicated circuits than the mentioned 32 bit adder where inputs can
 be controlled, and outputs observed, are circuits where inputs are
 driven by e.g. internal registers, and where the outputs are not
-directly observable. In such circuits, either aribtrarly long
+directly observable. In such circuits, either arbitrarily long
 sequences must be applied to steer and observe the registers, or test
 points must be inserted.
 
-Whith clocked circuits, such test points are usually implemented by
+With clocked circuits, such test points are usually implemented by
 connecting multiplexers to registers, choosing whether the circuit
-should operate in the normal mode, or that the regusters should be
+should operate in the normal mode, or that the registers should be
 connected in series, making a scan-chain. Scan-chains are
-shift-registers that makes it possible to control and observe all the
+shift-registers that make it possible to control and observe all the
 scan-enabled registers. Scan-chains also allows single-stepping the
 circuit, and by stopping the clock (and traditionally the entire
 circuit), $I_{DDQ}$ tests can be performed to find shorts in the
@@ -278,8 +277,8 @@ In \cite[pp. 27-28]{sparso} testing of clockless circuits is briefly
 discussed, noting that the indication-principle will cause a circuit
 with a stuck-at fault to deadlock. In \cite[pp. 26]{fullscan}, this is
 referred to as the ``acknowledge property'', and it is noted that this
-only holds for the practical unusefull class of delay-insensitive
-circuits. In the more appliciable quasi delay insensitive kind of
+only holds for the practical unuseful class of delay-insensitive
+circuits. In the more applicable quasi delay insensitive kind of
 circuits, isochronic forks can extend faults to not only cause a
 circuit to deadlock, but also lead to a misbehaving circuit.
 Furthermore, \cite{fullscan} provides methods for implementing a
@@ -294,10 +293,10 @@ the circuit start operating. The reset signal is either said to be
 synchronous or asynchronous with regards to the global clock. A
 synchronous reset signal must, as other signals, arrive within the
 setup and hold times of the flip flops. An asynchronous reset must be
-released simultainously across the whole circuit, a problem which is
+released simultaneously across the whole circuit, a problem which is
 as hard as distributing a global clock.
 
-Not all parts of a circuit usually needs to be set in a known state
+Not all parts of a circuit usually need to be set in a known state
 for a circuit to operate correctly. E.g. a circuit that receives some
 input into registers, processes the data, and then outputs the
 results, need not to reset the data-registers as they will be
