@@ -171,7 +171,7 @@ As a reference of the relative performance of the AES, a simple
 benchmark was done on a computer\footnote{openssl version
   0.9.8g. Measurement performed with the command ``openssl time
   aes''.}. The results are shown in table~\ref{tab:aes}. A feasability
-study \cite{feas} shows that througput up to \unit{500}{\giga \bit
+study \cite{feas} shows that throughput up to \unit{500}{\giga \bit
   \per \second} should be possible on VLSI.
 
 \begin{table}[h]
@@ -212,13 +212,13 @@ can be subject to side-band attacks. If an attacker has physical
 access to a weak system performing AES, multiple techniques exists for
 retrieving information about the key.
 
-If not careful implemented, a circuit can exhibit non-constant timing
-when performing, revealing patterns of the data being processed, that
-being the key or plaintext. Implementations can also have weaknesses
-where the power dissipation depends on the data, which lets a careful
-attacker measure and gather data about the key. A third method is to
-inject faults into a system, making it malfunction and reveal secret
-data.
+If not carefully implemented, a circuit can exhibit non-constant
+timing when performing, revealing patterns of the data being
+processed, that being the key or plaintext. Implementations can also
+have weaknesses where the power dissipation depends on the data, which
+lets a careful attacker measure and gather data about the key. A third
+method is to inject faults into a system, making it malfunction and
+reveal secret data.
 
 The clockless AES implemented in \cite{claes} was developed to avoid
 these kind of attacks, and concludes that their dual-rail

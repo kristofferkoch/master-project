@@ -69,15 +69,15 @@ for e.g. verification on conventional FPGAs. Tangram is also a so
 called syntax-directed language, meaning that each language construct
 is deterministically mapped to a handshake-component. This allows the
 designer to better understand and optimize circuits as they are
-written. Tangram has been to implement fairly complex circuits,
+written. Tangram has been used to implement fairly complex circuits,
 including a clockless 80c51 processor\cite{80c51}.
 
 Balsa\cite{tut} is another CSP-like language based on the priciples
 from Tangram, and is an attempt to define a more expressive
-language. Balsa also introduces a intermediate file format, breeze,
+language. Balsa also introduces an intermediate file format, breeze,
 which contains the netlist for the handshake components. As shown in
 figure~\ref{fig:balsaflow} Breeze handshake circuit files can later be
-implemented into standard-cell logic by.
+implemented into standard-cell logic.
 
 Tangram and Balsa are referred to as being ``syntax-directed''
 languages. This means that the silicon compiler transparently and

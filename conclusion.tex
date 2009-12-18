@@ -3,13 +3,13 @@
 In this project, methods for creating circuits without clocks have
 been researched, and a clockless AES-module have been implemented to a
 netlist comprising of primitive gates, using the Balsa language and
-Teak synthesis system. Well founded theoretical foundations was found,
-but the found workflows for implementing clockless circuits, while
-able to implement circuits, was not found to be as stable and complete
-as their clocked counterparts. Clockless circuits have special
-properties, and should be considered when the goals are low power, low
-emi, secure crypto implementations and robustness to operating
-conditions.
+Teak synthesis system. Well founded theoretical foundations were
+found, but the found workflows for implementing clockless circuits,
+while able to implement circuits, were not found to be as stable and
+complete as their clocked counterparts. Clockless circuits have
+special properties, and should be considered when the goals are low
+power, low electromagnetic emissions, secure crypto implementations
+and robustness to operating conditions.
 
 \subsection{Further work}
 
@@ -20,18 +20,9 @@ this project lacks support for this kind of testing. It should be
 possible to implement testing both in Balsa and Teak.
 
 Furthermore, technology-mapping and place \& route need further
-research to expolore the clockless methodology. Power estimation is
+research to explore the clockless methodology. Power estimation is
 also important to assess how design choices affect power consumption
 
 With Teak, new possibilites for automatic optimization opens up, and
 is clearly an area for further research.
-
-\begin{quotation}
-  ``I regard programs as specific instances of mechanisms, and I wanted
-  to express, at least once, my strong feeling that many of my
-  considerations concerning software are, mutatis mutandis, just as
-  relevant for hardware design''
-
-  --Edsger W. Dijkstra
-\end{quotation}
 
